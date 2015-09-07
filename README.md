@@ -1,4 +1,4 @@
-[bluefalconjun.github.io](https://github.com/bluefalconjun/bluefalconjun.github.io/wiki)
+inherit from [bluefalconjun.github.io](https://github.com/bluefalconjun/bluefalconjun.github.io/wiki)
 
 this is for record the study and translate the info on android open source website.
 
