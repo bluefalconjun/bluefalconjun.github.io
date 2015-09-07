@@ -1,6 +1,5 @@
 # Summary
 
-* [Introduction](Introduction.md)
-* [Introduction](Introduction.md)
+* [Introduction](README.md)
 * [Android Source Code](android_source_code.md)
 
