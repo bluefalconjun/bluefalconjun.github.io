@@ -2,13 +2,10 @@ transfer from [bluefalconjun.github.io](https://github.com/bluefalconjun/bluefal
 
 this is for record the study and translate the info on android open source website.
 
-学习并翻译android source code网站上的开发信息.
-```
-test code
-go lan is the best lang in the world.
-```
-http://source.android.com/
+学习并翻译[android source code](http://source.android.com/)网站上的开发信息.
 
 
+
+```Code is poetry```
 
 
