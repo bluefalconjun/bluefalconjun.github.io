@@ -1,4 +1,4 @@
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io/wiki/Home)*_  
+_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
 ***  
 _**Chrome:**_  
 
@@ -7,7 +7,4 @@ _**Chrome:**_
     sudo dpkg -i google-chrome-stable_current_xxx.deb
 ***  
 
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io/wiki/Home)*_  
-
-
-
+_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
