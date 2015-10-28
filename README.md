@@ -20,7 +20,14 @@ For record info.
 ---
 >**Android**
 
-**> [system overview](https://github.com/bluefalconjun/bluefalconjun.github.io/wiki/system-overview)** 
+**> [Add New Device](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.addnewdev.md)** 
+**> [Git & Repo](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.developing.gitrepo.md)** 
+**> [Device Arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.devicearch.md)** 
+**> [TV](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.tv.md)** 
+**> [DRM](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.drm.md)** 
+**> [Graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.graphics.md)** 
+**> [Media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.media.md)** 
+**> [Source](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.source.md)** 
 
 ---
 ```Code is Poetry```
