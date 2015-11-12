@@ -75,41 +75,41 @@
 **License Metadata**
 证书元数据包括有证书有效期, 可重复次数等. 它可能被打包在受保护内容的权限中. **Android DRM Framework**提供**API**来返回它同受保护内容的约束关联. 查看**[DrmManagerClient](http://developer.android.com/reference/android/drm/DrmManagerClient.html)**来获取详细信息. 
 
+
+
 **`DrmConstraints* getConstraints(int uniqueId, const String path, int action);`**
-getConstraint函数调用返回受保护流中打包的键值对. 
-The getConstraint function call returns key-value pairs of constraints embedded in protected content. To retrieve the constraints, the uniqueIds (the Unique identifier for a session and path of the protected content) are required. The action, defined as Action::DEFAULT, Action::PLAY, etc., is also required.
+getConstraint函数调用返回受保护流中打包的保护密钥键值对. 为了取得保护密钥键值对, 唯一标识ID()需要提供给该接口. 当前所需的操作, 定义为`Action::DEFAULT, Action::PLAY` 等等也需要提供.
+![Android DRM License Metadata](http://source.android.com/devices/images/ape_fwk_drm_retrieve_license.png)
+**Figure 5.** `Retrieve license metadata`
 
-Android DRM License Metadata
-Figure 5. Retrieve license metadata
+**`DrmMetadata* getMetadata(int uniqueId, const String path);`**
+获取按照指定路径的受保护内容相关的密钥键值对的元数据内容.
 
-DrmMetadata* getMetadata(int uniqueId, const String path);
-Get metadata information associated with input content for a given path of the protected content to return key-value pairs of metadata.
+**Decrypt session**
+为管理解密会话, **DRM Framework** 的调用者必须在解密序列的开始请求调用`openDecryptSession()`, 这个函数将向所有的 **DRM** 插件来请求并查询谁能够处理当前输入的 **DRM** 内容.
 
-Decrypt session
 
-To maintain the decryption session, the caller of the DRM framework must invoke openDecryptSession() at the beginning of the decryption sequence. openDecryptSession() asks each DRM plug-in if it can handle input DRM content.
+**`status_t openDecryptSession( int uniqueId, DecryptHandle* decryptHandle, int fd, off64_t offset, off64_t length);`**
+函数说明错误.
 
-status_t openDecryptSession( int uniqueId, DecryptHandle* decryptHandle, int fd, off64_t offset, off64_t length);
-The above call allows you to save DRM rights to specified rights path and make association with content path. DrmRights parameter is the rights to be saved, file path where rights should be and content file path where content should be saved.
+**DRM plug-in Listeners**
+**DRM Framework** 中的某些API在DRM传输过程中是异步工作的, 应用可以向**DRM Framework**注册三个监听器类.
 
-DRM plug-in Listeners
 
-Some APIs in DRM framework behave asynchronously in a DRM transaction. An application can register three listener classes to DRM framework.
+**OnEventListener** 针对异步API的返回值.
+**OnErrorListener** 针对异步API的错误返回.
+**OnInfoListener** 针对DRM传输过程中的补充信息.
 
-OnEventListener for results of asynchronous APIs
-OnErrorListener for receiving errors of asynchronous APIs
-OnInfoListener for any supplementary information during DRM transactions.
-Source
+**Source**
+**Android DRM Framework**中包含一份简单的**passthrough**插件. 实现代码可以参考:
+[**`<platform_root>/frameworks/base/drm/libdrmframework/plugins/passthru`**](https://android.googlesource.com/platform/frameworks/av/+/master/drm/libdrmframework/plugins/passthru/)
 
-The Android DRM framework includes a passthru plug-in as a sample plug-in. The implementation for passthru plug-in can be found in the Android source tree at:
-<platform_root>/frameworks/base/drm/libdrmframework/plugins/passthru
+**Build and Integration**
+将以下内容加入到插件实现部分的Android.mk中. passthrough插件作为参考例子:
 
-Build and Integration
+    PRODUCT_COPY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/<plugin_library>:system/lib/drm/plugins/native/<plugin_library> e.g.,
+    PRODUCT_COPY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/ libdrmpassthruplugin.so:system/lib/drm/plugins/native/libdrmpassthruplugin.so
 
-Add the following to the Android.mk of the plug-in implementation. The passthruplugin is used as a sample.
+插件开发者必须将所提供的插件库按照位置存放至系统路径:
+**`/system/lib/drm/plugins/native/libdrmpassthruplugin.so`**
 
-PRODUCT_COPY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/<plugin_library>:system/lib/drm/plugins/native/<plugin_library> e.g.,
-PRODUCT_COPY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/ libdrmpassthruplugin.so:system/lib/drm/plugins/native/libdrmpassthruplugin.so 
-
-Plug-in developers must locate their respective plug-ins under this directory like so:
-/system/lib/drm/plugins/native/libdrmpassthruplugin.so
