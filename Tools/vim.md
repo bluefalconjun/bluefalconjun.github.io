@@ -61,6 +61,7 @@ _**useful cmd:**_
     CTRL-O/I: jump to previous/next location.
 
 _**Tips:**_
+
     :%s/[search]/[replace]/g 
 
 
