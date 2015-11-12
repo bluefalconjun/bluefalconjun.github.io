@@ -60,7 +60,8 @@ _**useful cmd:**_
     $numG: jump to num of file or null num ends.
     CTRL-O/I: jump to previous/next location.
 
-    
+_**Tips:**_
+    :%s/[search]/[replace]/g 
 
 
 ***  
