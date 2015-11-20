@@ -11,7 +11,8 @@ For record info.
 
 **> [shadowsocks](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/shadowsocks.md)**
 
-**> [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/atom.md)**
+**> [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/atom.md)**  
+**> [mactype](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/mactype.md)**  
 
 **> [synergy](http://synergy-project.org/)**  
 
