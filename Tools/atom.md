@@ -8,7 +8,7 @@ Edit ~/.atom/.apmrc
     strict-ssl=false
 
 
-Change for bookmakr keymap in file: keymap.cson
+Change for bookmark keymap in file: keymap.cson
 
     #add for bookmark
     '.platform-win32 atom-text-editor':
