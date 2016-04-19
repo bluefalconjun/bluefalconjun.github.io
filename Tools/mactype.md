@@ -4,11 +4,12 @@ mactype will render Fonts in windows like MAC !!!
 2.install MacTray  
 3.setup as your wish  
 
-4.change chrome to enable mactype:  
-    a.open chrome://flags  
-    b.set Disable DirectWrite Windows  
-      Disables the use of experimental DirectWrite font rendering system. #disable-direct-write  
-      Disable  
+4.change chrome to enable mactype: Update with chrome50
+    chrome://flags/#disable-direct-write 启用 
+    chrome://flags/#num-raster-threads 改为 1 
+    chrome://flags/#ignore-gpu-blacklist 启用 (Chrome50已改为默认启用)
+    chrome://flags/#enable-zero-copy 停用 
+    chrome启动参数添加 --disable-directwrite-for-ui
 
 5.change atom to enable mactype:  
     a.open $atom_install/app-$atom-version/resources/app.asar  
