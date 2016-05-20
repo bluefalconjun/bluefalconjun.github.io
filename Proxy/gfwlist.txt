@@ -5563,6 +5563,7 @@ taipei.gov.tw
 !################Privatelist Start################
 !use proxy
 ||v2ex.*
+||pingdom.net
 ||github.*
 ||githubusercontent.*
 ||coursera.*
