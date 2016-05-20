@@ -5574,10 +5574,10 @@ taipei.gov.tw
 
 !################Privatelist Start################
 !use proxy
-*.v2ex.*
-*.github.*
-*.githubusercontent.*
-*.coursera.*
+||v2ex.*
+||github.*
+||githubusercontent.*
+||coursera.*
 !do not use proxy
 @@||montage-tech.*
 @@||192.168.*
