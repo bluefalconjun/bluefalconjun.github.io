@@ -279,18 +279,6 @@ china-mmm.sa.com
 !!---NaughtyAmerica---
 ||naughtyamerica.com
 
-!!---V2EX---
-.v2ex.com
-!--Included in above rule: dns.v2ex.com
-@@|http://v2ex.com
-@@|http://cdn.v2ex.com
-@@|http://cn.v2ex.com
-@@|http://hk.v2ex.com
-@@|http://i.v2ex.com
-@@|http://lax.v2ex.com
-@@|http://pagespeed.v2ex.com
-@@|http://static.v2ex.com
-@@|http://www.v2ex.com
 
 !------------------Numerics---------------------
 .0rz.tw
