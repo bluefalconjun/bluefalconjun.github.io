@@ -5568,7 +5568,8 @@ taipei.gov.tw
 ||githubusercontent.*
 ||coursera.*
 !do not use proxy
-@@||montage-tech.*
-@@||192.168.*
+@@||montage-tech.com
+@@||192.168.32.17
+@@||192.168.8.32
 !################Privatelist Start################
 !---------------------EOF-----------------------
