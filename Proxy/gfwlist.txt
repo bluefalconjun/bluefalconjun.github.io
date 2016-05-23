@@ -5567,6 +5567,8 @@ taipei.gov.tw
 ||github.*
 ||githubusercontent.*
 ||coursera.*
+||spdbccc.com.cn
+||steampowered.com
 !do not use proxy
 @@||montage-tech.com
 @@||192.168.32.17
