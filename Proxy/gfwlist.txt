@@ -5569,6 +5569,7 @@ taipei.gov.tw
 ||coursera.*
 ||spdbccc.com.cn
 ||steampowered.com
+||stackedit.io
 !do not use proxy
 @@||montage-tech.com
 @@||192.168.32.17
