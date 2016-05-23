@@ -149,3 +149,6 @@
 	PRODUCT_PACKAGE_OVERLAYS:	指定使用默认资源或者product指定重载. eg: vendor/acme/overlay
 	
 	PRODUCT_PROPERTY_OVERRIDES: 以格式为"key=value"的系统属性定义列表.
+
+
+test update.
