@@ -13,22 +13,31 @@
 
 **bootloader:**
 包含设备提供商自定义的bootlader执行代码. 通常存在两个同样的bootloader分区. 以支持recovery模式中升级bootloader. 同时也包含进入recovery模式判断的逻辑.
+
 **misc:**
 单独的分区用以在bootloader和kernel间传递相关信息. 如recovery命令行, android设备boot次数等.
+
 **boot:**
 包含linux kernel和一个较小的root文件系统(该系统将被load进ram disk设备). 它将挂载系统和其他分区, 并启动系统分区上的其他执行信息. 
+
 **system:**
 包含源代码在**Android Open Source**项目(**AOSP**)上的系统程序和库文件. 在通常的操作中. system分区被挂载为只读格式. 只有在OTA更新时被更改.
+
 **vendor:**
 包含设备提供商的应用和库文件, 该部分的程序代码并不开源. 同system分区一样.
+
 **userdata:**
 保存由用户安装的应用所管理的数据等等, OTA过程中这部分的数据内容通常不会被改变.
+
 **cache:**
 临时性的保存非常少的应用所存储的数据(使用该分区需要特殊的系统权限). 而且用以保存下载OTA更新包. 其他的应用在预期存储的文件可能随时消失的情况. 某些OTA包在安装过程中可能会格式化该分区.
+
 **recovery:**
 包含第二个完整的linux系统. 内容有kernel和部分特殊的恢复模式执行程序, 它可以读取更新包并根据包内容来更新其他的分区.
+
 **tz:**
-通常包含设备提供商自定义的trust zone相关的密钥/加解密信息.
+通常包含设备提供商自定义的trust zone相关的密钥/加解密信息, tee小系统的代码也通常放置在此处.
+
 **factory_setting:**
 通常包含设备提供商硬件相关的信息, 如device_id/mac地址/pq数据库等.
 
