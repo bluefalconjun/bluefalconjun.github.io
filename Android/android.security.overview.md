@@ -10,7 +10,7 @@ android作为现代的开放移动平台,在其中运行的应用使用各类硬
 
 Android被设计为方便开发者的系统. 安全控制功能被设计为尽量减少开发者的负担为方向.  安全相关的开发者能够依赖灵活的安全控制功能来完成工作. 低安全相关的开发者能够被默认保护在安全状态.
 
-Android同样被设计为考虑用户的系统. 用户对程序如何工作是可见的, 并且完全控制程序的工作. 这个设计包含了预期攻击者使用标准的攻击方法, 例如社会工程学的方法,诱导用户安装恶意软件. 或者是通过攻击Android设备上的第三方软件进行攻击. Android被设计为尽量减少这类攻击的可能性, 在攻击成功后尽量降低其危害.
+Android同样被设计为考虑用户的系统. 用户可以清楚的了解对程序如何工作, 并且完全控制程序的工作. 这个设计包含了预期攻击者使用标准的攻击方法, 例如社会工程学的方法,诱导用户安装恶意软件. 或者是通过攻击Android设备上的第三方软件进行攻击. Android被设计为尽量减少这类攻击的可能性, 并且在攻击真的成功时尽量降低其危害.
 
 该文档提供Android安全程序的大纲, 描述Android安全系统的架构基本点, 并回答大部分常见的系统架构和安全分析的问题. 文档专注于Android核心平台的安全功能点. 不会对具体特定的应用安全问题进行讨论. 推荐建立/发行Android设备的最佳实践, 开发Android应用相关内容不在这个范围之内.
 
@@ -58,10 +58,27 @@ Google对所有兼容的andorid设备提供基于云端的服务, 主要服务�
 
 Android安全程序的关键部分有以下几点:
 
- - **Design Review**: 设计评审. The Android security process begins early in the development lifecycle with the creation of a rich and configurable security model and design. Each major feature of the platform is reviewed by engineering and security resources, with appropriate security controls integrated into the architecture of the system.
+ - **Design Review**: **设计评审**. 在项目开发的初期, 所有可用的安全模型被列出到android安全设计中. 每个主要的安全功能都应该由相关人员进行评审, 之后将对应的安全控制机制加入到系统中.
 
- - **Penetration Testing and Code Review**: During the development of the platform, Android-created and open source components are subject to vigorous security reviews. These reviews are performed by the Android Security Team, Google’s Information Security Engineering team, and independent security consultants. The goal of these reviews is to identify weaknesses and possible vulnerabilities well before the platform is open sourced, and to simulate the types of analysis that will be performed by external security experts upon release.
+ - **Penetration Testing and Code Review**: **渗透测试/代码评审**. 在平台开发过程中, Android建立并开放源代码部分, 并交付给多种安全性评审. 这些评审包括Android安全小组, Google的信息安全程序组,  和第三方的独立安全顾问. 评审的目标是在平台代码开源前定义出弱点和可能的漏洞, 并且模拟发布后由在外部的安全专家所进行的类型分析.
 
- - **Open Source and Community Review**: The Android Open Source Project enables broad security review by any interested party. Android also uses open source technologies that have undergone significant external security review, such as the Linux kernel. Google Play provides a forum for users and companies to provide information about specific applications directly to users.
+ - **Open Source and Community Review**: **开源/社区评审**. AOSP项目为所有有兴趣的团体提供安全评审的公告板. 同时Android使用经过了外部严格安全评审的系统模块, 例如 linux kernel. Google Play也提供了一个专为开发者/厂家提供应用到客户的信息论坛. 
 
- - **Incident Response**: Even with all of these precautions, security issues may occur after shipping, which is why the Android project has created a comprehensive security response process. A full-time Android security team constantly monitors Android-specific and the general security community for discussion of potential vulnerabilities. Upon the discovery of legitimate issues, the Android team has a response process that enables the rapid mitigation of vulnerabilities to ensure that potential risk to all Android users is minimized. These cloud-supported responses can include updating the Android platform (over-the-air updates), removing applications from Google Play, and removing applications from devices in the field.
+ - **Incident Response**: **事件响应**. 即使存在以上的预防措施, 安全问题仍然会在产品出货后出现, 因此Android项目建立了一个全面的安全响应机制. 全职的Android安全小组监视android上/和通用平台上的安全漏洞问题. 通过查看已纰漏的漏洞信息, android安全小组使用一套响应机制来保护所有android用户, 使得已知的漏洞对其造成最少的潜在伤害. 这些基于云端的响应机制包括进行系统安全更新(OTA), 从Google Play中下架特定应用或者从特定地区的Android设备中移除应用. 
+
+
+> **Platform Security Architecture**
+
+Android力求成为最安全和易用的移动设备操作系统, 它通过重新设计/实现以下的系统安全控制来完善这个目标:
+
+ - 保护用户数据.
+ - 保护系统资源(包括网络连接).
+ - 提供应用隔离
+
+为达成以上目标, android提供以下的关键安全功能:
+
+ - 基于linux kernel的OS级别的健壮的安全性.
+ - 为所有应用实现强制性的沙盒机制.
+ - 安全的进程间通讯. 
+ - 应用签名
+ - 应用定义/用户批准的权限机制.
