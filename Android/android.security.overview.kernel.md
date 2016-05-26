@@ -29,9 +29,66 @@ android系统充分使用kernel提供的基于用户管理的权限模型, 来�
 
 为了建立起kernel级别的应用沙盒, kernel通过标准的linux机制在应用和系统之间强制实行安全管理. 每个应用均被赋予uid/gid. 在缺省情况下, 应用之间不能交互, 同时对系统也只存在限制的访问权限. 举例说明: 当A应用尝试某些危险行为类似于读取B应用的数据或者在无权限的时候拨打电话(电话是一个独立应用), 系统会阻止这类操作因为A并没有足够的用户权限. 沙盒是比较简单的安全机制, 它基于历史久远的UNIX风格的以用户方式分离的处理/文件权限.
 
+![overview](http://source.android.com/security/images/android_software_stack.png)
 
-Since the Application Sandbox is in the kernel, this security model extends to native code and to operating system applications. All of the software above the kernel in Figure 1, including operating system libraries, application framework, application runtime, and all applications run within the Application Sandbox. On some platforms, developers are constrained to a specific development framework, set of APIs, or language in order to enforce security. On Android, there are no restrictions on how an application can be written that are required to enforce security; in this respect, native code is just as secure as interpreted code.
+因为应用沙盒存在于kernel中, 这个安全模块可以同时管理native代码和系统应用. 上图中所有kernel之上的软件模块包括系统库/应用中间件/应用运行环境和所有应用都处在应用沙盒保护中. 在某些其他平台上, 开发者被限制在某些特定的中间件/api支持环境下以保证安全. 但是在Android中, 对于应用的编写没有这种限制来保证安全, 在这一点上, 所有native代码的应用和解释性代码的应用具有同样的安全性.
 
-In some operating systems, memory corruption errors generally lead to completely compromising the security of the device. This is not the case in Android due to all applications and their resources being sandboxed at the OS level. A memory corruption error will only allow arbitrary code execution in the context of that particular application, with the permissions established by the operating system.
+在某些系统中, 内存越界访问会导致完全的设备安全性问题. 但在android中不存在这种情况, 所有的应用和它们的资源均在OS级别被沙盒保护. 应用的内存越界问题仅仅允许当前应用的代码可能被非法执行, 同时它仍然在操作系统的权限控制之内.
 
-Like all security features, the Application Sandbox is not unbreakable. However, to break out of the Application Sandbox in a properly configured device, one must compromise the security of the the Linux kernel.
+同所有的安全特性模块一样, 沙盒机制并不是完全无法突破的, 但是在一个正确配置的设备上破解应用沙盒限制, 那么攻击者首先必须攻破linux kernel的安全机制.
+
+
+> **System Partition and Safe Mode**
+
+系统分区包含有android的核心, 它由android系统库, 应用运行环境, 应用中间件和应用组成. 当用户将系统启动至安全模式(Safe Mode), 那么只有核心android应用可以被使用. 这可以保证用户可以将设备运行在没有第三方软件的环境中.
+
+> **Filesystem Permissions**
+
+在UNIX类型的环境中, 文件系统权限管理保证用户不能修改或者读取其他用户的文件. Android在这种环境中将所有应用运行在它自己的用户管理下, 每个应用创建的文件都不能被其他应用读取或者修改, 除非该应用明确的向其他应用提供文件访问权限.
+
+> **Security-Enhanced Linux**
+
+Android使用Security-Enhanced Linux (SELinux)来完成访问控制规则, 并在此基础上建立强制访问控制的环境(mac). 细节参见[**Validating Security-Enhanced Linux in Android.**](http://source.android.com/security/selinux/index.html)
+
+> **Cryptography**
+
+Android为应用提供一套加密APIs来使用. 它包含有标准广泛使用的加密算法实现: AES/RSA/DSA/SHA. 同时, 也提供高级别的协议支持, 例如SSL/HTTPS. 
+
+从Android 4.0中引入了[`KeyChain`](http://developer.android.com/reference/android/security/KeyChain.html)类允许应用来使用系统凭证的存储空间来保存私有的key和证书链.
+
+
+> **Rooting of Devices**
+
+缺省情况下, android系统中只有kernel和很小一套的核心应用运行在root权限上. android并不阻止应用运行在root权限下来修改系统/kernel或者其他应用. 通常, root权限拥有对所有应用和数据的访问权限. 用户在android设备上对应用进行root权限提升会造成安全模型被恶意软件和漏洞攻击的风险加大.
+
+自行修改android平台对Android平台的开发者来说是很重要的. 在很多android设备上, 开发者可以通过解锁bootloader来安装修改过的android版本, 在这些修改版本上开发者/用户可以对应用自行升级root权限, 这可以帮助进行应用/系统组件的调试, 并且可以让应用访问一些未通过标准android api提供出来的访问权限.
+
+在某些设备上, 拥有物理控制和usb线缆的连接的个人可以自行安装新的修改过的android版本来获取root权限. 为了保护在这中情况下的用户数据, 
+On some devices, a person with physical control of a device and a USB cable is able to install a new operating system that provides root privileges to the user. To protect any existing user data from compromise the bootloader unlock mechanism requires that the bootloader erase any existing user data as part of the unlock step. Root access gained via exploiting a kernel bug or security hole can bypass this protection.
+
+Encrypting data with a key stored on-device does not protect the application data from root users. Applications can add a layer of data protection using encryption with a key stored off-device, such as on a server or a user password. This approach can provide temporary protection while the key is not present, but at some point the key must be provided to the application and it then becomes accessible to root users.
+
+A more robust approach to protecting data from root users is through the use of hardware solutions. OEMs may choose to implement hardware solutions that limit access to specific types of content such as DRM for video playback, or the NFC-related trusted storage for Google wallet.
+
+In the case of a lost or stolen device, full filesystem encryption on Android devices uses the device password to protect the encryption key, so modifying the bootloader or operating system is not sufficient to access user data without the user’s device password.
+
+User Security Features
+
+Filesystem Encryption
+
+Android 3.0 and later provides full filesystem encryption, so all user data can be encrypted in the kernel using the dmcrypt implementation of AES128 with CBC and ESSIV:SHA256. The encryption key is protected by AES128 using a key derived from the user password, preventing unauthorized access to stored data without the user device password. To provide resistance against systematic password guessing attacks (e.g. “rainbow tables” or brute force), the password is combined with a random salt and hashed repeatedly with SHA1 using the standard PBKDF2 algorithm prior to being used to decrypt the filesystem key. To provide resistance against dictionary password guessing attacks, Android provides password complexity rules that can be set by the device administrator and enforced by the operating system. Filesystem encryption requires the use of a user password, pattern-based screen lock is not supported.
+
+More details on implementation of filesystem encryption are available at Encryption.
+
+Password Protection
+
+Android can be configured to verify a user-supplied password prior to providing access to a device. In addition to preventing unauthorized use of the device, this password protects the cryptographic key for full filesystem encryption.
+
+Use of a password and/or password complexity rules can be required by a device administrator.
+
+Device Administration
+
+Android 2.2 and later provide the Android Device Administration API, which provides device administration features at the system level. For example, the built-in Android Email application uses the APIs to improve Exchange support. Through the Email application, Exchange administrators can enforce password policies — including alphanumeric passwords or numeric PINs — across devices. Administrators can also remotely wipe (that is, restore factory defaults on) lost or stolen handsets.
+
+In addition to use in applications included with the Android system, these APIs are available to third-party providers of Device Management solutions. Details on the API are provided at Device Administration.
+
