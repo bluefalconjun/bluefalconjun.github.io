@@ -5570,6 +5570,7 @@ taipei.gov.tw
 ||spdbccc.com.cn
 ||steampowered.com
 ||stackedit.io
+||tumblr.com
 !do not use proxy
 @@||montage-tech.com
 @@||192.168.32.17
