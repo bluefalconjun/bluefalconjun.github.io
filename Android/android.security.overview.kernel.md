@@ -25,10 +25,10 @@ linux kernel为android平台提供以下的关键安全功能:
 
 > **The Application Sandbox**
 
-android系统充分使用kernel提供的基于用户管理的权限模型, 
-The Android platform takes advantage of the Linux user-based protection as a means of identifying and isolating application resources. The Android system assigns a unique user ID (UID) to each Android application and runs it as that user in a separate process. This approach is different from other operating systems (including the traditional Linux configuration), where multiple applications run with the same user permissions.
+android系统充分使用kernel提供的基于用户管理的权限模型, 来定义和隔离应用资源. android系统为每一个android应用运行独立的进程, 并为其分配一个唯一的UID. 在android系统中这种方式不同于其他的系统(包括经典的linux系统配置, 这种配置中多进程共享同样的用户权限).
 
-This sets up a kernel-level Application Sandbox. The kernel enforces security between applications and the system at the process level through standard Linux facilities, such as user and group IDs that are assigned to applications. By default, applications cannot interact with each other and applications have limited access to the operating system. If application A tries to do something malicious like read application B's data or dial the phone without permission (which is a separate application), then the operating system protects against this because application A does not have the appropriate user privileges. The sandbox is simple, auditable, and based on decades-old UNIX-style user separation of processes and file permissions.
+为了建立起kernel级别的应用沙盒, kernel通过标准的linux机制在应用和系统之间强制实行安全管理. 每个应用均被赋予uid/gid. 在缺省情况下, 应用之间不能交互, 同时对系统也只存在限制的访问权限. 举例说明: 当A应用尝试某些危险行为类似于读取B应用的数据或者在无权限的时候拨打电话(电话是一个独立应用), 系统会阻止这类操作因为A并没有足够的用户权限. 沙盒是比较简单的安全机制, 它基于历史久远的UNIX风格的以用户方式分离的处理/文件权限.
+
 
 Since the Application Sandbox is in the kernel, this security model extends to native code and to operating system applications. All of the software above the kernel in Figure 1, including operating system libraries, application framework, application runtime, and all applications run within the Application Sandbox. On some platforms, developers are constrained to a specific development framework, set of APIs, or language in order to enforce security. On Android, there are no restrictions on how an application can be written that are required to enforce security; in this respect, native code is just as secure as interpreted code.
 
