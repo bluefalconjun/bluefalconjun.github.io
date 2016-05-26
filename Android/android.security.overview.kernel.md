@@ -63,20 +63,20 @@ Android为应用提供一套加密APIs来使用. 它包含有标准广泛使用�
 
 自行修改android平台对Android平台的开发者来说是很重要的. 在很多android设备上, 开发者可以通过解锁bootloader来安装修改过的android版本, 在这些修改版本上开发者/用户可以对应用自行升级root权限, 这可以帮助进行应用/系统组件的调试, 并且可以让应用访问一些未通过标准android api提供出来的访问权限.
 
-在某些设备上, 拥有物理控制和usb线缆的连接的个人可以自行安装新的修改过的android版本来获取root权限. 为了保护在这中情况下的用户数据, 
-On some devices, a person with physical control of a device and a USB cable is able to install a new operating system that provides root privileges to the user. To protect any existing user data from compromise the bootloader unlock mechanism requires that the bootloader erase any existing user data as part of the unlock step. Root access gained via exploiting a kernel bug or security hole can bypass this protection.
+在某些设备上, 拥有物理控制和usb线缆的连接的个人可以自行安装新的修改过的android版本来获取root权限. 为了保护在这种情况下的用户数据, 解锁bootloader的机制中需要增加对所有以存在的用户数据的清空动作. 利用kernel缺陷和安全漏洞的root权限提升可以跳过这个保护.
 
-Encrypting data with a key stored on-device does not protect the application data from root users. Applications can add a layer of data protection using encryption with a key stored off-device, such as on a server or a user password. This approach can provide temporary protection while the key is not present, but at some point the key must be provided to the application and it then becomes accessible to root users.
+在设备上存储key的方式来加密并不能在root用户面前保护应用数据, 应用可以通过不存在设备上的key加密来保护数据. 这种方法可以在key不存在时临时保护数据, 但是当它被提供给应用时它对于root用户来讲就是可见的.
 
-A more robust approach to protecting data from root users is through the use of hardware solutions. OEMs may choose to implement hardware solutions that limit access to specific types of content such as DRM for video playback, or the NFC-related trusted storage for Google wallet.
+更加稳健的从root用户访问情况下保护数据的方式是通过使用硬件方案来完成的. OEMs将选择实现硬件安全方案, 这可以限制对特定类型内容的访问, 例如 播放视屏时的DRM, 或者Google钱包中使用的可信存储的NFC数据.
 
-In the case of a lost or stolen device, full filesystem encryption on Android devices uses the device password to protect the encryption key, so modifying the bootloader or operating system is not sufficient to access user data without the user’s device password.
+在这种情况下, 丢失或者被偷盗的设备, 它的完整的文件系统被通过设备密码保护的加密key所保护, 在没有设备密码的情况下即使修改bootloader或者系统本身也无法获取用户数据.
 
-User Security Features
 
-Filesystem Encryption
+> **User Security Features**
 
-Android 3.0 and later provides full filesystem encryption, so all user data can be encrypted in the kernel using the dmcrypt implementation of AES128 with CBC and ESSIV:SHA256. The encryption key is protected by AES128 using a key derived from the user password, preventing unauthorized access to stored data without the user device password. To provide resistance against systematic password guessing attacks (e.g. “rainbow tables” or brute force), the password is combined with a random salt and hashed repeatedly with SHA1 using the standard PBKDF2 algorithm prior to being used to decrypt the filesystem key. To provide resistance against dictionary password guessing attacks, Android provides password complexity rules that can be set by the device administrator and enforced by the operating system. Filesystem encryption requires the use of a user password, pattern-based screen lock is not supported.
+**Filesystem Encryption**
+
+Android 3.0和后期的版本提供了全局文件系统加密支持, 所有的用户数据均能在kernel中通过dmcrypt来完成, 它通过CBC和ESSIV:SHA256来实现AES128的加密. 加密kernel以从用户密码中产生的key来进行AES128保护. 在没有用户密码的情况下无法访问存储的数据. 为了避免密码破解攻击(例如: 彩虹表,暴力破解), 密码同一个随机数和预先产生的使用标准PDBDF2算法的SHA1重复哈希数进行混合, 之后才能用来解密文件系统的key. 为了避免密码字典猜测的解密方式, android提供了一套复杂的密码定义机制, 它由系统管理者设备并且由系统强制实现. 文件系统加密需要用户密码的支持, 常见的图形密码锁定并不支持这一点.
 
 More details on implementation of filesystem encryption are available at Encryption.
 
