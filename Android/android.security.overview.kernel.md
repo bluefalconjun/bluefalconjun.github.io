@@ -78,17 +78,18 @@ Android为应用提供一套加密APIs来使用. 它包含有标准广泛使用�
 
 Android 3.0和后期的版本提供了全局文件系统加密支持, 所有的用户数据均能在kernel中通过dmcrypt来完成, 它通过CBC和ESSIV:SHA256来实现AES128的加密. 加密kernel以从用户密码中产生的key来进行AES128保护. 在没有用户密码的情况下无法访问存储的数据. 为了避免密码破解攻击(例如: 彩虹表,暴力破解), 密码同一个随机数和预先产生的使用标准PDBDF2算法的SHA1重复哈希数进行混合, 之后才能用来解密文件系统的key. 为了避免密码字典猜测的解密方式, android提供了一套复杂的密码定义机制, 它由系统管理者设备并且由系统强制实现. 文件系统加密需要用户密码的支持, 常见的图形密码锁定并不支持这一点.
 
-More details on implementation of filesystem encryption are available at Encryption.
+更多实现全局文件系统加密的方式请参考[**`Encryption`**](http://source.android.com/security/encryption/index.html)
 
-Password Protection
+> **Password Protection**
 
-Android can be configured to verify a user-supplied password prior to providing access to a device. In addition to preventing unauthorized use of the device, this password protects the cryptographic key for full filesystem encryption.
+Android能被配置为必须提供用户预定义的密码来访问设备, 这可以防止未授权的设备使用, 这个密码保护了全局文件系统的加密key.
 
-Use of a password and/or password complexity rules can be required by a device administrator.
+设备管理员可以定义使用何种/复杂度的密码来确保这一点.
 
-Device Administration
+> **Device Administration**
 
-Android 2.2 and later provide the Android Device Administration API, which provides device administration features at the system level. For example, the built-in Android Email application uses the APIs to improve Exchange support. Through the Email application, Exchange administrators can enforce password policies — including alphanumeric passwords or numeric PINs — across devices. Administrators can also remotely wipe (that is, restore factory defaults on) lost or stolen handsets.
+Android 2.2 以及之后的版本提供了`Android Device Administration API`, 它在系统级别上提供了设备管理权限功能. 例如: 内建的android邮件应用可以通过设备管理权限来提升至Exchange支持. 通过Email应用, Exchange管理者可以强制改变当前的密码策略--包括字符密码或者数字PINs. 管理者也可以远程清空(恢复出厂设置)丢失/被盗的设备.
 
-In addition to use in applications included with the Android system, these APIs are available to third-party providers of Device Management solutions. Details on the API are provided at Device Administration.
+除了给Android系统中自带的程序提供支持, 设备管理APIs同样对第三方程序可用, 第三方程序可以实现自己的设备管理方案. 详细内容参考[`**Device Administration**`](https://developer.android.com/guide/topics/admin/device-admin.html).
+
 
