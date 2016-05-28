@@ -75,30 +75,39 @@ Google Play支持设备生产商在不进行整体系统升级的情况下来更
 
 通常情况下, 预安装的应用不应当使用共享系统UID来运行. 如果应用需要以系统共享UID来运行或者是需要访问某些特权功能(如电话), 这个应用应当不扩展出任何可能被用户安装的第三方应用所访问的功能, 例如服务/广播监听器/内容提供等. 推荐做法:
 
- - 可能情况下, 设备仅在系统(system)权限下运行最小部分的代码.
-Devices should run the minimum necessary code as system. Where possible, use an Android process with its own UID rather than reusing the system UID.
-Where possible, system code should be isolated from untrusted data and expose IPC only to other trusted processes.
-System processes must not listen on a network socket.
-Isolating processes
+ - 可能情况下, 设备仅在系统(system)权限下运行最小部分的代码. 在可能的情况下使用Android进程自己的UID而避免重用系统UID.
+ - 可能情况下, 系统界别的代码应该被隔离在未知数据之外, 并通过IPC仅向可信任的进程提供服务.
+ - 系统进程不允许监听网络端口.
 
-The Android Application Sandbox provides applications with an expectation of isolation from other processes on the system, including root processes and debuggers. Unless debugging is specifically enabled by the application and the user, no application should violate that expectation. Best practices:
+**Isolating processes**
 
-Root processes must not access data within individual application data folders, unless using a documented Android debugging method.
-Root processes must not access memory of applications, unless using a documented Android debugging method.
-Devices must not include any application that accesses data or memory of other applications or processes.
-Securing SUID files
+Android应用沙盒机制保护程序不被系统上其他进程所干扰, 包括root进程和调试器也在内. 只有在应用和用户明确的允许调试行为时, 这中情况才能发生. 推荐做法:
 
-New setuid programs should not be accessible by untrusted programs. Setuid programs have frequently been the location of vulnerabilities that can be used to gain root access, so strive to minimize the availability of the setuid program to untrusted applications. Best practices:
+ - root进程不能访问应用独立的数据文件, 除非使用已文档化的Android调试机制.
+ - root进程不能访问应用的内存, 除非使用调试机制.
+ - 发布的设备上不能包含任何可以访问其他应用/进程的数据/内存的应用.
 
-SUID processes must not provide a shell or backdoor that can be used to circumvent the Android security model.
-SUID programs must not be writable by any user.
-SUID programs should not be world readable or executable. Create a group, limit access to the SUID binary to members of that group, and place any applications that should be able to execute the SUID program into that group.
-SUID programs are a common source of user rooting of devices. To reduce this risk, SUID programs should not be executable by the shell user.
-CTS verifier includes an informational test listing SUID files; some setuid files are not permitted per CTS tests.
+**Securing SUID files**
 
-Securing listening sockets
+新的setuid程序不能被未授权的程序所调用. setuid程序是在获取权限升级的入侵过程中最常见被攻击的. 所以在这种情况下将其保护在未授权程序的范围之外是推荐的:
 
-CTS tests fail when a device is listening on any port, on any interface. In the event of a failure, Android verifies the following best practices are in use:
+ - SUID程序必须避免提供shell或者是后门, 它们会被用于跳过android安全模型.
+ - SUID程序必须对任何用户都是不可写的.
+ - SUID程序不能是公开可读/可执行的, 创建一个管理组, 将任何需要访问SUID进程的应用加入到这个组中.
+ - SUID程序是用户root设备的标准资源, 所以不允许shell用户执行该程序以减少风险.
+
+CTS verifier包含有一组测试来列出当前SUID文件, 在测试中某些setuid文件是被禁止的.
+
+**Securing listening sockets**
+
+CTS测试在设备上进行时, 如果设备在监听任何端口/接口, 那么该测试将会失败. android将通过以下的推荐来验证安全性:
+
+ - 运行初始设备时,设备上不包含任何监听端口.
+ - 必须能够在OTA以外的方式来关闭监听端口, 可以通过server连接或者用户配置的方式来完成.
+ - root进程不允许监听任何端口.
+ - 使用系统UID的进程不允许监听任何端口.
+ - 为本地IPC而是用的socket, server应用必须使用UNIX域的socket类型(**`AF_UNIX`**), 并且以组的形式限制访问. 为这个IPC创建文件描述符并对指定的UNIX组赋予+RW权限. 任何client应用必须存在于这个UNIX组中.
+ - 
 
 There should be no listening ports on the device.
 Listening ports must be able to be disabled without an OTA. This can be either a server or user-device configuration change.
