@@ -107,77 +107,75 @@ CTS测试在设备上进行时, 如果设备在监听任何端口/接口, 那么
  - root进程不允许监听任何端口.
  - 使用系统UID的进程不允许监听任何端口.
  - 为本地IPC而是用的socket, server应用必须使用UNIX域的socket类型(**`AF_UNIX`**), 并且以组的形式限制访问. 为这个IPC创建文件描述符并对指定的UNIX组赋予+RW权限. 任何client应用必须存在于这个UNIX组中.
- - 
+ - 在某些包含有多个处理器的设备上(例如通讯模块和应用CPU分离的情况), 多处理器之间需要使用网络端口来进行通讯. 在这种情况下, 多处理器间的通讯必须使用隔离的网络接口来实现, 这可以避免设备上未授权的程序访问它(使用iptables来限制).
+ - 监听端口的守护进程必须足够安全, 尤其是在处理恶意数据的情况. Google将对端口进行未授权/授权的应用测试来检查其稳定性. 任何导致的程序崩溃均会被定义为高优先级的bug来处理.
 
-There should be no listening ports on the device.
-Listening ports must be able to be disabled without an OTA. This can be either a server or user-device configuration change.
-Root processes must not listen on any port.
-Processes owned by the system UID must not listen on any port.
-For local IPC using sockets, applications must use a UNIX Domain Socket with access limited to a group. Create a file descriptor for the IPC and make it +RW for a specific UNIX group. Any client applications must be within that UNIX group.
-Some devices with multiple processors (e.g. a radio/modem separate from the application processor) use network sockets to communicate between processors. In such instances, the network socket used for inter-processor communication must use an isolated network interface to prevent access by unauthorized applications on the device (i.e. use iptables to prevent access by other applications on the device).
-Daemons that handle listening ports must be robust against malformed data. Google may conduct fuzz-testing against the port using an unauthorized client, and, where possible, authorized client. Any crashes will be filed as bugs with an appropriate severity.
-Logging data
+**Logging data**
 
-Logging data increases the risk of exposure of that data and reduces system performance. Multiple public security incidents have occurred as the result of logging sensitive user data by applications installed by default on Android devices. Best practices:
+数据记录工作将增大数据被暴露的风险, 同时也会降低系统性能. android设备上已经发生过多起因为应用自行记录数据而导致的安全问题. 推荐做法:
 
-Applications or system services should not log data provided from third-party applications that might include sensitive information.
-Applications must not log any Personally Identifiable Information (PII) as part of normal operation.
-CTS includes tests that check for the presence of potentially sensitive information in the system logs.
+ - 应用和系统服务都不要记录由第三方应用产生的数据, 这里面可能包含有敏感信息.
+ - 应用在正常操作过程中不要记录任何个人信息相关的数据.
 
-Limiting directory access
+CTS包含有对系统log的检查, 以保证其中不包含可能敏感的信息内容.
 
-World-writable directories can introduce security weaknesses and enable an application to rename trusted files, substitute files, or conduct symlink-based attacks (attackers may use a symlink to a file to trick a trusted program into performing actions it shouldn't). Writable directories can also prevent the uninstall of an application from properly cleaning up all files associated with an application.
+**Limiting directory access**
 
-As a best practice, directories created by the system or root users should not be world writable. CTS tests help enforce this best practice by testing known directories.
+任何人都可读写的目录将引入安全漏洞, 它将允许应用重命名可信文件, 或者造成基于符号链接的攻击(攻击者可以通过创建符号链接来跳过程序对访问位置的限制). 可写的目录同样会造成通过删除所有应用相关的文件来达到删除应用自身的问题.
 
-Securing configuration files
+对此的解决方案, 所有由系统或者root用户创建的目录不能是任何人都可写的. CTS测试将检查所有已知目录来帮助实现这一点.
 
-Many drivers and services rely on configuration and data files stored in directories such as /system/etc and /data. If these files are processed by a privileged process and are world writable, it is possible for an app to exploit a vulnerability in the process by crafting malicious contents in the world-writable file. Best practices:
+**Securing configuration files**
 
-Configuration files used by privileged processes should not be world readable.
-Configuration files used by privileged processes must not be world writable.
-Storing native code libraries
+许多驱动和服务依赖于配置/数据文件来进行工作. 通常存放的目录为**`/system/etc  o或  /data`**. 如果这些文件是所有人读写并且由某些特权进程来处理的话, 这会导致攻击者通过伪造恶意数据内容来进行攻击. 建议方式:
 
-Any code used by privileged device manufacturer processes must be in /vendor or /system; these filesystems are mounted read-only on boot. As a best practice, libraries used by system or other highly-privileged apps installed on the phone should also be in these filesystems. This can prevent a security vulnerability that could allow an attacker to control the code that a privileged process executes.
+ - 特权进程使用的配置文件**最好**不能是所有人可读的.
+ - 特权进程使用的配置文件**必须**不是所有人可写的.
 
-Limiting device driver access
+**Storing native code libraries**
 
-Only trusted code should have direct access to drivers. Where possible, the preferred architecture is to provide a single-purpose daemon that proxies calls to the driver and restricts driver access to that daemon. As a best practice, driver device nodes should not be world readable or writable. CTS tests help enforce this best practice by checking for known instances of exposed drivers.
+所有设备提供商提供的特权进程必须存放在**`/vendor 或 /system`**分区中; 这两个分区在启动时被挂载为只读. 推荐的方式是, 所有系统或者其他高权限的应用所使用的相关库也必须存放在相关的分区中. 这可以避免攻击者通过替换特权进程使用的库文件来进行攻击. 
 
-Disabling ADB
+**Limiting device driver access**
 
-Android debug bridge (adb) is a valuable development and debugging tool, but is designed for use in controlled, secure environments and should not be enabled for general use. Best practices:
+只有可信任的代码才能够直接访问驱动. 在可能的情况下, 最好建立单一目标的守护进程来提供代理驱动访问. 可以在该守护进程上进行严格的访问限制检查. 同时, 驱动设备节点必须不是所有人可读/可写的. CTS测试将检查所有公开的驱动设备节点来验证这一点. 
 
-ADB must be disabled by default.
-ADB must require the user to turn it on before accepting connections.
-Unlocking bootloaders
+**Disabling ADB**
 
-Many Android devices support unlocking, enabling the device owner to modify the system partition and/or install a custom operating system. Common use cases include installing a third-party ROM and performing systems-level development on the device. For example, a Google Nexus device owner can run fastboot oem unlock to start the unlocking process, which presents the following message to the user:
+**`Android debug bridge (adb)`**是一个高效的开发调试工具, 但是它被设计为在可控的安全环境中使用, 而不是通用工具. 推荐方式:
 
-Unlock bootloader?
+ - ADB在默认情况下是关闭的.
+ - ADB在允许连接之前必须通过用户允许来打开.
 
-If you unlock the bootloader, you will be able to install custom operating system software on this phone.
+**Unlocking bootloaders**
 
-A custom OS is not subject to the same testing as the original OS, and can cause your phone and installed applications to stop working properly.
+许多Android设备支持解锁功能. 它可以支持设备拥有者自行修改系统分区, 安装自定义的系统. 常见的使用方式是安装第三方自制的ROM, 并且在设备上进行系统界别的开发. 例如: Google Nexus设备的拥有这可以运行fastboot oem解锁工具来进行解锁, 解锁过程中会有以下信息显示:
 
-To prevent unauthorized access to your personal data, unlocking the bootloader will also delete all personal data from your phone (a "factory data reset").
+    Unlock bootloader?
+    
+    If you unlock the bootloader, you will be able to install custom operating system software on this phone.
+    
+    A custom OS is not subject to the same testing as the original OS, and can cause your phone and installed applications to stop working properly.
+    
+    To prevent unauthorized access to your personal data, unlocking the bootloader will also delete all personal data from your phone (a "factory data reset").
+    
+    Press the Volume Up/Down buttons to select Yes or No. Then press the Power button to continue.
+    
+    **Yes**: Unlock bootloader (may void warranty)
+    
+    **No**: Do not unlock bootloader and restart phone.
 
-Press the Volume Up/Down buttons to select Yes or No. Then press the Power button to continue.
+作为以上功能的推荐实现, 解锁android设备的动作必须包含安全删除所有的用户数据. 如果删除动作失败并且设备被解锁, 那么这将造成物理上的系统被修改并且android用户数据将暴露给攻击者. 为保护用户数据, 所有提供解锁功能的设备提供商必须正确的实现删除用户数据的操作(已经有很多设备提供商未能正确实现的例子). 正确的实现解锁操作必须包含以下的属性:
 
-Yes: Unlock bootloader (may void warranty)
+ - 当用户确认进行解锁动作时, 立即开始进行数据清除工作. **`unlocked`**标识在安全的数据清除工作完成前不能被设置.
+ - 如果安全数据清除工作不能完成, 那么设备必须继续存在于锁定状态.
+ - 在底层的块设备支持的情况下, **`ioctl(BLKSECDISCARD)`**或者等效的命令必须被使用来清除数据. 对于eMMC设备, 这意味着使用安全擦除或者是安全修改(**`Secure Erase or Secure Trim`**)的命令. 对于eMMC4.5或之后的产品, 这意味这使用一个正常的擦除/修改(**`Erase or Trim`**)命令后再完成一个消毒(**`Sanitize`**)操作.
+ - 如果底层设备不支持**`BLKSECDISCARD`**操作, 使用**`ioctl(BLKDISCARD)`**来代替, 这是eMMC设备上的常见修改命令.
+ - 如果**`BLKDISCARD`**也不支持, 使用全零来覆写着这个块设备也是可以接受的.
+ - 终端用户在进行分区刷写之前, 必须能对用户数据进行清空. 例如在Nexus设备上这将通过**`fastboot oem lock`**命令来完成.
+ - 设备必须通过efuses/或其他方式来存储设备解锁/未解锁的信息.
 
-No: Do not unlock bootloader and restart phone.
+这些要求将保证一次完整的结果过程中所有的用户数据都被安全删除掉了. 不能完成该项保证的设备将被视为中等程度的安全漏洞.
 
+设备的解锁操作之后将可以继续进行上锁操作. 锁定bootloader将提供和原设备提供商OS相同方式的用户数据保护. 
 
-As a best practice, unlockable Android devices must securely erase all user data prior to being unlocked. Failure to properly delete all data on unlocking may allow a physically proximate attacker to gain unauthorized access to confidential Android user data. To prevent the disclosure of user data, a device that supports unlocking must implement it properly (we've seen numerous instances where device manufacturers improperly implemented unlocking). A properly implemented unlocking process has the following properties:
-
-When the unlocking command is confirmed by the user, the device must start an immediate data wipe. The unlocked flag must not be set until after the secure deletion is complete.
-If a secure deletion cannot be completed, the device must stay in a locked state.
-If supported by the underlying block device, ioctl(BLKSECDISCARD) or equivalent should be used. For eMMC devices, this means using a Secure Erase or Secure Trim command. For eMMC 4.5 and later, this means using a normal Erase or Trim followed by a Sanitize operation.
-If BLKSECDISCARD is not supported by the underlying block device, ioctl(BLKDISCARD) must be used instead. On eMMC devices, this is a normal Trim operation.
-If BLKDISCARD is not supported, overwriting the block devices with all zeros is acceptable.
-An end user must have the option to require that user data be wiped prior to flashing a partition. For example, on Nexus devices, this is done via the fastboot oem lock command.
-A device may record, via efuses or similar mechanism, whether a device was unlocked and/or relocked.
-These requirements ensure that all data is destroyed upon the completion of an unlock operation. Failure to implement these protections is considered a moderate level security vulnerability.
-
-A device that is unlocked may be subsequently relocked using the fastboot oem lock command. Locking the bootloader provides the same protection of user data with the new custom OS as was available with the original device manufacturer OS (e.g. user data will be wiped if the device is unlocked again).
