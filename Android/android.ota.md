@@ -1,3 +1,4 @@
+
 ###[**OTA Updates**](http://source.android.com/devices/tech/ota/index.html)
 
 当前的**Android**设备能够接收并安装 **OTA** 来进行系统和应用程序的更新. 设备上自带有特殊的恢复分区(**recovery partition**), 分区中包含有必须的软件, 来支持对下载的更新包进行解析, 并更新到系统的其他部分上.
