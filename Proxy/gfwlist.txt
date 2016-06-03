@@ -5571,6 +5571,7 @@ taipei.gov.tw
 ||steampowered.com
 ||stackedit.io
 ||tumblr.com
+||live.com
 !do not use proxy
 @@||montage-tech.com
 @@||192.168.32.17
