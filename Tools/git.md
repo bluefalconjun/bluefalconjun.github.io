@@ -24,3 +24,12 @@
 ~/.gitcm.template
 
     [commit from xxx host]
+
+
+remove git certification from mac
+
+    $git credential-osxkeychain erase
+    host=github.com
+    protocol=https
+    [Press Return]
+
