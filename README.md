@@ -32,10 +32,7 @@ ___
 >**System**
 >**`win7 with mactype is good, mac air is also good with terminal, ubuntu is so slow...`**
 
-[ubuntu](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/System/ubuntu.md)
-
-
-
+ - [ubuntu](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/System/ubuntu.md)
 
 ---
 **```Code is Poetry```**
