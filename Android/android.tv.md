@@ -344,8 +344,8 @@ TV Input Manager存储每个分级的TVContentRating(内容分级), 并在isRati
             version_major: 0,
             version_minor: 1,
             id: TV_INPUT_HARDWARE_MODULE_ID,
-            name: "Marvell TV input module",
-            author: "Marvell Technology Group Ltd.",
+            name: "Company TV input module",
+            author: "Company Technology Group Ltd.",
             methods: &tv_input_module_methods,
         }
     };
