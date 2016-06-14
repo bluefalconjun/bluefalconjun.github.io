@@ -6,7 +6,7 @@ ___
 
 >**Android**
 
-**`translate page from [http://source.android.com/] and try to add my own experience`**
+**`translate from ( http://source.android.com ) and try to add my own experience`**
 
  - [add new device](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.addnewdev.md)
  - [git & repo](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Android/android.developing.gitrepo.md)
@@ -21,11 +21,11 @@ ___
 
 >**Tools**
 
-**`every time you need 3 days to set up your own working env. so be ware of changing PC/Job`**
+**`every time you need 3 days to set up your own working env. so be ware of changing PC/Company`**
 
  - [bashrc](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/bashrc.md)
  - [vim](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/vim.md)
- **`btw, i use vim and 4 blanks for indentation`**
+ **`btw, i use 4 blanks for indentation`**
  - [shadowsocks](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/shadowsocks.md)
  - [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/atom.md)
  - [mactype](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/Tools/mactype.md)
