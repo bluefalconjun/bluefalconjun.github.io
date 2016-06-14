@@ -289,11 +289,12 @@ TV Input Manager存储每个分级的TVContentRating(内容分级), 并在isRati
         const tv_input_callback_ops_t* callback;
         void* callback_data;
     } tv_input_private_t;
-    static int tv_input_device_open(const struct hw_module_t* module,
-            const char* name, struct hw_device_t** device);
+    
+    static int tv_input_device_open(const struct hw_module_t* module, const char* name, struct hw_device_t** device);
     static struct hw_module_methods_t tv_input_module_methods = {
         open: tv_input_device_open
     };
+    
     tv_input_module_t HAL_MODULE_INFO_SYM = {
         common: {
             tag: HARDWARE_MODULE_TAG,
@@ -308,24 +309,26 @@ TV Input Manager存储每个分级的TVContentRating(内容分级), 并在isRati
 
 ----------
 
-    static int tv_input_get_stream_configurations(
-            const struct tv_input_device*, int, int*, const tv_stream_config_t**)
+    static int tv_input_get_stream_configurations(const struct tv_input_device*, int, int*, const tv_stream_config_t**)
     {
         return -EINVAL;
     }
+    
     static int tv_input_open_stream(struct tv_input_device*, int, tv_stream_t*)
     {
         return -EINVAL;
     }
+    
     static int tv_input_close_stream(struct tv_input_device*, int, int)
     {
         return -EINVAL;
     }
-    static int tv_input_request_capture(
-            struct tv_input_device*, int, int, buffer_handle_t, uint32_t)
+    
+    static int tv_input_request_capture(struct tv_input_device*, int, int, buffer_handle_t, uint32_t)
     {
         return -EINVAL;
     }
+    
     static int tv_input_cancel_capture(struct tv_input_device*, int, int, uint32_t)
     {
         return -EINVAL;
