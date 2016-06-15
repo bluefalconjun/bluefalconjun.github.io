@@ -2,7 +2,7 @@ _*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_
 ***  
 _**~/.vimrc:**_  
 
-    set compatible
+    set nocompatible
     set showmode
 
     set number
@@ -31,6 +31,7 @@ _**~/.vimrc:**_
     set ru
     set sm
     set mps=(:),{:},[:]
+	set et
     
     set noswf
     set nobackup
