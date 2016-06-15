@@ -1,7 +1,7 @@
 
-
 ###[**Security**](http://source.android.com/security/index.html)
 
+-----
 **Security**
 
 android作为现代的开放移动平台,在其中运行的应用使用各类硬件和软件栈,通过平台向用户提供创新和有价值的服务. 为了保护其内容, 平台必须提供一套保障用户安全的应用/数据/设备/网络环境. 
