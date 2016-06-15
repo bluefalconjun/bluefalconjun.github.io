@@ -34,6 +34,7 @@
 除了小部分**`Android OS`**的代码以**`root`**权限运行. 其他所有运行在**`Linux Kernel`**上的代码均被应用沙盒严格的限制.
 
 ![android software stack](http://source.android.com/security/images/android_software_stack.png)
+
 **`android software stack`**
 
 -----
