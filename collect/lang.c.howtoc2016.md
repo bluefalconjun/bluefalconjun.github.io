@@ -1,4 +1,6 @@
 [文章源地址](https://matt.sh/howto-c)
+**`另, 自行翻译后源地址上已经有其他人翻译的更好的版本`**
+[**`传送门`**](http://www.infoq.com/cn/articles/c-language-2016)
 
 **How to C in 2016**
 
