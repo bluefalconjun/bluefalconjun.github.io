@@ -1,5 +1,6 @@
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_
+_*[Back Home](https://bluefalconjun.github.io)*_
 ***  
+
 _**~/.vimrc:**_  
 
     set nocompatible
@@ -13,7 +14,7 @@ _**~/.vimrc:**_
     set hlsearch
     set incsearch
     set wrapscan
-    
+
     set acd
     set ws
     set is
@@ -32,10 +33,10 @@ _**~/.vimrc:**_
     set sm
     set mps=(:),{:},[:]
 	set et
-    
+
     set noswf
     set nobackup
-    
+
     "set enc=utf-8
 
     colorscheme desert
@@ -50,7 +51,7 @@ _**~/.vimrc:**_
     set ai!
     filetype plugin indent on
     set so=10
-    
+
 _**useful cmd:**_  
 
     J: delete current line's break.
@@ -63,8 +64,8 @@ _**useful cmd:**_
 
 _**Tips:**_
 
-    :%s/[search]/[replace]/g 
+    :%s/[search]/[replace]/g
 
 
 ***  
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_
+_*[Back Home](https://bluefalconjun.github.io)*_

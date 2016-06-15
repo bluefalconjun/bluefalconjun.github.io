@@ -1,3 +1,6 @@
+_*[Back Home](https://bluefalconjun.github.io)*_  
+***
+
 *git config*
 
 ~/.gitconfig
@@ -33,3 +36,5 @@ remove git certification from mac
     protocol=https
     [Press Return]
 
+*** 
+_*[Back Home](https://bluefalconjun.github.io)*_  

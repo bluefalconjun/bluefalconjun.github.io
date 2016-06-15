@@ -1,4 +1,4 @@
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
+_*[Back Home](https://bluefalconjun.github.io)*_  
 ***  
 
 
@@ -40,6 +40,4 @@ _**bashrc:**_
 
 
 ***  
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
-
-
+_*[Back Home](https://bluefalconjun.github.io)*_  

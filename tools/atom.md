@@ -1,3 +1,6 @@
+_*[Back Home](https://bluefalconjun.github.io)*_  
+***  
+
 Atom
 
 Set Proxy on Atom:
@@ -15,7 +18,7 @@ Change for bookmark keymap in file: keymap.cson
       'ctrl-f2': 'bookmarks:toggle-bookmark'
     'atom-text-editor':
       'ctrl-alt-f2': 'bookmarks:view-all'
-      
+
 Useful Packages:
 
     convert-to-utf8
@@ -24,4 +27,6 @@ Useful Packages:
     go-plus
     highlight-selected
     project-manager
-    
+
+*** 
+_*[Back Home](https://bluefalconjun.github.io)*_  

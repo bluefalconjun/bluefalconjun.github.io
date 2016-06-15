@@ -1,5 +1,6 @@
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
+_*[Back Home](https://bluefalconjun.github.io)*_  
 ***  
+
 **> on Ubuntu (server&client)**  
 
 _install the ss server/client in python version._  
@@ -17,8 +18,8 @@ _config format for server/client._
      "local_port":xx,    //clients only
      "password":"xxxxx",  
      "method":"aes-256-cfb",  
-    } 
-  
+    }
+
 _use **supervisor** to auto start **ssserver** on host._  
 
     /etc/supervisor/supervisord.conf:
@@ -39,11 +40,11 @@ _optimize for server
 
 	* soft nofile 51200
 	* hard nofile 51200
-	
+
 /etc/pam.d/common-session:
 
 	session required pam_limits.so
-	
+
 /etc/profile:
 
 	ulimit -SHn 51200
@@ -76,8 +77,6 @@ _optimize for server
 
 **> on Android (client)**  
 **[Shadowsocks @ _google playstore_](https://play.google.com/store/apps/details?id=com.github.shadowsocks)**  
+
 ***  
-_*[Back Home](https://github.com/bluefalconjun/bluefalconjun.github.io)*_  
-
-
-
+_*[Back Home](https://bluefalconjun.github.io)*_  
