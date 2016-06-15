@@ -58,6 +58,13 @@ ___
  - [synergy](http://synergy-project.org/)
 **`this is a non-free tool to share one set of keyboard/mouse to several pcs.`**
 
+>**collect**
+
+**`i wish i can learn more but everyone is out of time`**
+
+ - [encryption study](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/encryption.study.md)
+ - [how to c 2016 by matt.sh](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/lang.c.howtoc2016.md)
+
 >**system**
 
 **`win7 with mactype is good, mac air is also good with terminal, ubuntu is so slow...`**
