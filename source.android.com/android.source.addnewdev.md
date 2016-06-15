@@ -1,9 +1,11 @@
+
 ##[Adding New Device](http://source.android.com/source/add-device.html) 
 
 --------
 **当前页面中对设备(device)和产品(product)的描述,仅对企业编译/产品团队创建全新项目开发有效.**
 
-----------
+--------
+
 #### 理解编译层级:
 指定的系统架构(**arch**)上可以有多个板型(**board**). 基于指定板型上可以有多个产品(**product**).
 在每个编译级别上均可以单独定义并且指定当前级别的赋值.
@@ -35,7 +37,7 @@
 **arch**层定义了处理器的配置,即使用哪种系统/指令架构.
 
 
-----------
+
 ####使用编译变量:
 当编译指定的**product**时,通常做法是定义一个最终产品的最小变量集合.
 在模块(**module**)定义中,通过对**`LOCAL_MODULE_TAGS`**标签赋值来指定. 这个标签可以赋值为单个/多个变量(**optional** /**debug**.**eng**).
@@ -70,7 +72,7 @@
 	adb默认开启.
 
 
-----------
+
 ####建立product
 
 以Nexus6为例描述如何设置一个**product**的Makefile.
@@ -87,7 +89,7 @@
 6. 创建**vendorsetup.sh**文件,使用**`add_lunch_combo`** **`product_name-build-variant`** 将**product**加入到系统中.
 7. 按照该顺序,从**base device**中创建多个**product**变种.
 
-----------
+
 **aosp_shamu.mk:**
 
     # Inherit from the common Open Source product configuration
@@ -108,7 +110,7 @@
 	PRODUCT_PACKAGES += \
 	    Launcher3
 
-----------
+
 **AndroidProduct.mk:**
 
 	#
@@ -125,8 +127,6 @@
 	PRODUCT_MAKEFILES := \
 	    $(LOCAL_DIR)/aosp_shamu.mk
 
-
-----------
 
 下表是Product定义变量表. 可以在Product Makefile中指定变量:
 
