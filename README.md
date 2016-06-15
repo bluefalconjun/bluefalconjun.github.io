@@ -8,7 +8,7 @@ ___
 
 >**source.android.com**
 
-**`translate from ( http://source.android.com ) and try to add my own experience`**
+**`translate ( http://source.android.com ) to chinese and try to add my own experience`**
 
 **source**
 
