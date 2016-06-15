@@ -10,16 +10,40 @@ ___
 
 **`translate from ( http://source.android.com ) and try to add my own experience`**
 
- - [add new device](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.addnewdev.md)
- - [git & repo](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.developing.gitrepo.md)
- - [device arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.devicearch.md)
- - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.tv.md)
- - [drm](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.drm.md)
- - [graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.graphics.md)
- - [media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.media.md)
- - [source](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.source.md)
- - [ota](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.ota.md)
- - [compatibility](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.compatibility.md)
+**source**
+
+ - [overview](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.source.overview.md)
+ - [add new device](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.source.addnewdev.md)
+ - [git & repo](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.source.developing.gitrepo.md)
+
+**device**
+
+ - [device arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md)
+ - [drm](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.drm.md)
+ - [graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.graphics.md)
+ - [media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.md)
+ - [ota](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.tech.ota.md)
+ - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
+
+**security**
+
+ - [overview](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.overview.md)
+ - [overview implement](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.overview.implement.md)
+ - [overview kernel](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.overview.kernel.md) 
+ - [authentication](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.authentication.md)
+ - [encryption](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.encryption.md)
+ - [implematation dmverity](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.imple.dmverity.md)
+ - [keystore](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.keystore.md)
+ - [selinux overview](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.selinux.overview.md)
+ - [selinux concepts](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.selinux.concepts.md)
+ - [trusty](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.trusty.md)
+ - [verified boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifiedboot.md)
+ - [verifying boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifying.md)
+
+**compatibility**
+
+ - [compatibility overview](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.compatibility.overview.md)
+ - [compatibility cts](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.compatibility.cts.md)
 
 >**tools**
 
