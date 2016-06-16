@@ -79,22 +79,29 @@ BASE64 ENCODED DATA
 > **使用openssl生成密钥**
 
 生成2048位RSA密钥,使用3des加密产生密钥文件private.pem
+
 `openssl genrsa -des3 -out private.pem 2048`
 
 导出公钥,默认为PKCS＃8结构
+
 `openssl rsa -in private.pem -outfrom PEM －pubout public.pem`
 
 导出PKCS#1结构的公钥
+
 `openssl rsa -in private.pem -outform DER -RSAPublicKey_out -out public_pcks1.cer`
 
 导出无加密保护的私钥
+
 `openssl rsa -in private.pem -out private_unencrypted.pem -outform PEM`
 
 对issue.clear文件进行3des加密并输出至/out目录, 此处需手动输入密码.
+
 `openssl enc -e -des3 -a - salt -in ./issue.clear -out /out/issue.crypt`
 
 可对加密文件进行解密.
+
 ` openssl enc -d -des3 -a -salt -in /out/issue.crypt -out /tmp/issue.new`
 
 使用散列算法提取特征吗
+
 `openssl dgst -md5|-sha1 ./issue.clear`
