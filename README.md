@@ -38,7 +38,7 @@ ___
  - [selinux concepts](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.selinux.concepts.md)
  - [trusty](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.trusty.md)
  - [verified boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifiedboot.md)
- - [verifying boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifying.md)
+ - [verifying boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifyingboot.md)
 
 **compatibility**
 
