@@ -296,14 +296,17 @@ android verifitable boot image的签名使用一个ASN.1 DER-加密信息, 该�
 
 -----
 设备状态: **`YELLOW (用户交互之前和之后)`**
+
 ![yellow state sample 1](http://source.android.com/security/images/boot_yellow1.png)
 
 ![yellow state sample 2](http://source.android.com/security/images/boot_yellow2.png)
 
 -----
 设备状态: **`ORANGE`**
+
 ![orange state sample](http://source.android.com/security/images/boot_orange.png)
 
 -----
 设备状态: **`RED`**
+
 ![red state sample](http://source.android.com/security/images/boot_red.png)
