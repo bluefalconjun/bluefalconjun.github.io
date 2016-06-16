@@ -150,7 +150,61 @@ attribute是一个简单的domains/types(组)的重命名. 每个domain/type可�
 
 -----
 [**`Tips`**]:
-以下是部分video process / tee 在selinux规则中的[**`例子`**]:
+
+以下是部分系统中object domain的标签(**`labels`**)定义的[**`例子`**]:
+
+**`user:role:type:mls_level`**
+
+        1 /storage/emulated/legacy                    u:object_r:fuse:s0
+		//legacy目录是有selinux user创建, 使用object_r role, fuse类型的object, 并具有s0的mls级别.
+        2
+        3 /dev/videocore                                u:object_r:video_device:s0
+        4 /dev/graphics/gal3d                         u:object_r:gfx_device:s0
+        5 /dev/tz                                     u:object_r:tee_device:s0
+        6 /dev/tzlogger                               u:object_r:tee_log_device:s0
+        7 /dev/bsm                                    u:object_r:bsm_device:s0
+        8 /dev/fts                                    u:object_r:fts_device:s0
+        9 /dev/mbtchar0                               u:object_r:bt_device:s0
+       10 /dev/cpm                                    u:object_r:cpm_chr_device:s0
+       11 /dev/snd_bt                                 u:object_r:snd_bt_device:s0
+       //以上定义了kernel资源设备, 同样为selinux user创建, 使用object_r role, 类型为对应类型设备, s0级别.
+       12
+       13 /dev/block/mmcblk0p1                        u:object_r:fts_block_device:s0
+       //emmc p1分区为rts类型的block设备.
+       14 /dev/block/mmcblk0rpmb                      u:object_r:rpmb_block_device:s0
+       15
+       16 /dev/i2c-[0-9]                              u:object_r:i2c_chr_device:s0
+       //可以使用regexp扩展缩写设备. 
+       17 /dev/hidraw[0-9]                            u:object_r:hidraw_device:s0
+       18
+       19 /dev/rfkill                                 u:object_r:rfkill_device:s0
+       20
+       21 /system/bin/av_settings                     u:object_r:av_settings_exec:s0
+       22 /system/bin/ethconfig                       u:object_r:ethconfig_exec:s0
+       23 /system/bin/wireless_device_detect.sh       u:object_r:wireless_init_exec:s0
+       24 /system/bin/mediaserver                 u:object_r:mediaserver_exec:s0
+       25 /system/bin/resourcemanager                 u:object_r:resourcemanager_exec:s0
+       26 /system/bin/kmsglogd                        u:object_r:kmsglogd_exec:s0
+       27 /system/bin/fixdate                         u:object_r:fixdate_exec:s0
+       //以上是系统进程的标签定义.
+       28
+       29 /system/vendor/bin/video_service              u:object_r:tee_exec:s0
+       31 /system/vendor/bin/clear_crashcounter       u:object_r:clear_crashcounter_exec:s0
+       32 /system/vendor/bin/install-vendor-recovery.sh u:object_r:install_recovery_exec:s0
+       33 /system/vendor/bin/voicecapture             u:object_r:voicecapture_exec:s0
+       34 /system/vendor/bin/cpusvc                   u:object_r:cpusvc_exec:s0
+       //以上是vendor进程的标签定义.
+       35
+       36 /factory_setting(/.*)?                      u:object_r:factory_setting_file:s0
+       37 /firmware(/.*)?                             u:object_r:firmware_file:s0
+       38 /user_setting(/.*)?                         u:object_r:user_setting_file:s0
+       39 /factory_data(/.*)?                         u:object_r:factory_data_file:s0
+       //以上是目录的标签定义.
+
+-----
+以下是部分video process / tee 编写实现selinux规则的[**`例子`**]:
+
+**`allow appdomain app_data_file:file rw_file_perms;`**
 
         1
         2 # tee domain macros
