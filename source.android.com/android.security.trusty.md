@@ -16,6 +16,8 @@ Trusty包含有:
 
 Trusty API的相关信息, 请参考[**`API Reference`**](http://source.android.com/security/trusty/trusty-ref.html)
 
+**`[Tips: trusty是android推荐的TEE实现方案.]`**
+
 -----
 > **Uses and examples**
 
@@ -109,5 +111,27 @@ AOSP上的Trusty kernel 分支地址:
 可以用过选择不同的编译目标来进行以上的编译: 
 
 **`device/*/*/project/*`**
+
+-----
+> **其他TEE介绍**
+
+**[open tee参考](http://www.linaro.org/blog/core-dump/op-tee-open-source-security-mass-market/):**
+
+![opentee](http://www.linaro.org/wp-content/uploads/2014/09/op-tee_diagram.png)
+
+OpenTee协助设备提供商在arm系列CPU上实现完整的TEE-OS环境支持. 上图的绿色线框部分由OpenTee实现. 设备提供商基于tee_client/tee_os进行TEE相关应用的开发.
+
+-----
+[基于tee的android secure video path参考](http://embedded-computing.com/articles/distributed-using-trusted-execution-environment/):
+
+![secure video path](http://d2lupdnmi5p5au.cloudfront.net/i__src9fe7ccf370bd91e1526c8fb595468df4_paraf0d99c20bd457d46a92c72841873c47.jpeg)
+
+完成基于硬件的secure video path需要以下模块的共同支持:
+
+ - 按照android drm plugin标准实现对应的plugin模型(playready/widevine)-android side.
+ - 实现安全的TEE环境支持.
+ - video process unit可以支持clear/secure video decode/display. 基于android omx plugin标准实现(5.0/6.0?).
+ - 基于硬件的证书处理机制(某些运营商的证书会随设备出厂预装).
+ - HDCP支持.
 
 -----
