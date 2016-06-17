@@ -36,6 +36,9 @@ selinux提供LSM钩子程序的实现机制, 并且管理这些安全objects, ob
 
 查看[**`Use Cases`**](http://source.android.com/security/selinux/implement.html#use_cases)来参考更多相关的例子和实现.
 
+**`[Tips: 设备中的相关资源区分颗粒度越细, selinux的安全性就越高.]`**
+**`[Tips: 但同时对于selinux规则的编写和服务的设计/编码工作就会越复杂.]`**
+
 -----
 > **Enforcement levels**
 
