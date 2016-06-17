@@ -56,6 +56,7 @@ Android应用扩展了android系统的核心功能. 有两种主要的应用源:
  - **`Pre-Installed Applications`**: android设备预装整套的应用集和, 包含有电话/邮件/日历/浏览器/通讯录等. 这些应用同时为用户和其他第三方应用提供服务. 预安装应用包含在AOSP开发代码中, 或者由平台OEM为特定设备进行开发.
 
 **`[Tips: 平台OEM会针对特定平台的硬件设置/特殊功能/同运营商的整合等情况, 加入更多的预装应用.]`**
+
 **`[Tips: 平台OEM也会使用修改过的AOSP应用, 来取代原生AOSP预装应用. 例子: 设备相关的PQ设置/ 原生AOSP 不支持的功能 PPPOE.]`**
 
  - **`User-Installed Applications`**: android提供开放的开发环境,对第三方应用开发进行支持. **`Google Play`**提供给用户数十万的应用使用.
@@ -93,6 +94,7 @@ Android安全程序的关键部分有以下几点:
  - **`Incident Response`**: **事件响应**. 即使存在以上的预防措施, 安全问题仍然会在产品供货后出现, 因此Android项目建立了一个全面的安全响应机制. 全职的Android安全小组监视android上/和通用平台上的安全漏洞问题. 通过查看已泄漏的漏洞信息, android安全小组使用快速响应机制来保护所有android用户, 使得已知的漏洞造成最少的潜在伤害. 这些基于云端的响应机制包括进行系统安全更新(OTA), 从Google Play中下架特定应用或者从特定地区的Android设备中移除应用. 
 
 **`[Tips: http://heartbleed.com/ 2014年爆出的开源openssl实现漏洞.]`**
+
 **`[Tips: 基于此, android从5.1起尝试切换实现为boringssl. https://android.googlesource.com/platform/external/boringssl/+/master]`**
 
 -----
@@ -115,7 +117,9 @@ Android力求成为最安全和易用的移动设备操作系统, 它通过重�
  - 应用定义/用户批准的权限管理机制.
 
 **`[Tips: kernel的完整安全性是android安全的基础.]`**
+
 **`[Tips: 设备提供商必须遵循标准应用的方式开发/分发预装应用.]`**
+
 **`[Tips: 内部服务在可能的情况下使用标准的binder机制进行通讯. 参考: http://www.jianshu.com/p/36e0c182adb2 ]`**
 
 -----
