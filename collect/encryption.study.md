@@ -31,6 +31,23 @@
  - 固定输入产生固定输出, 输入的变化导致更大的输出变化.
  - 无法反推原始数据, 输出定长.
 
+-----
+> **使用例子**
+
+![client access server through CA](https://www.internetum.com/wp-content/uploads/2015/05/SSL-certificates.png)
+
+ 1. client通过IP地址访问server.
+
+ 2. server回复client, 其中包含自己的证书和本次通讯的公钥.
+
+ 3. client对server的证书进行校验.
+
+ 4. client产生本次通讯的对称密钥, 使用server的公钥进行加密, 回复给server.
+
+ 5. server收到client的密文, 使用本次通讯的私钥进行解密,得到本次通讯的对称密钥.
+
+ 6. 双方使用对称密钥进行通讯.
+ 
 
 -----
 > **RSA密钥存储方式**
