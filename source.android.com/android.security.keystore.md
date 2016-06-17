@@ -41,6 +41,9 @@ HAL的实现中, 必须将所有的敏感操作都排除在用户空间/内核�
 
 **`libKeyMaster HAL`**并实现任何安全相关的算法, 而是向安全环境中的副本发起装载/解载密钥的操作. 该描述中的串行格式操作是将由其实现来进行定义.
 
+**`[Tips: 该模型的实现方式是基于TEE的android安全模型的典型例子. 相关的安全模块均已该方式在android系统中提供服务.]`**
+**`[Tips: 类似的例子还有: drm plugin. user crypto management. secure video]`**
+
 -----
 > **Compatibility with previous versions**
 
@@ -49,3 +52,4 @@ KeyMaster 1.0 HAL是同早期发布版本完全兼容的, 以加强兼容升级�
 
 该代理不能完全实现1.0 HAL的功能, 它仅仅支持RSA/ECDSA算法, 并且密钥强制验证的工作将由代理在非安全环境中实现.
 
+-----
