@@ -35,6 +35,8 @@ boot partition中包含有一个公钥, 该公钥由OEM在系统之外进行验�
 
 为保证**`dm-verity`**的工作, 设备必须使用基于块设备的OTA功能. 来更新整个分区. 细节参考[**`Block-Based OTAs.`**](http://source.android.com/devices/tech/ota/block.html)
 
+**`[Tips: 如果设备已经实现dm-verity, 那么该设备的OTA必须是基于block进行的, 否则会造成OTA/增量OTA之后的dm-verity失败.]`**
+
 -----
 **配置dm-verity**
 
