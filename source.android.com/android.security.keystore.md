@@ -42,6 +42,7 @@ HAL的实现中, 必须将所有的敏感操作都排除在用户空间/内核�
 **`libKeyMaster HAL`**并实现任何安全相关的算法, 而是向安全环境中的副本发起装载/解载密钥的操作. 该描述中的串行格式操作是将由其实现来进行定义.
 
 **`[Tips: 该模型的实现方式是基于TEE的android安全模型的典型例子. 相关的安全模块均已该方式在android系统中提供服务.]`**
+
 **`[Tips: 类似的例子还有: drm plugin. user crypto management. secure video]`**
 
 -----
