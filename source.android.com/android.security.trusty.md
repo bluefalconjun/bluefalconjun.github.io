@@ -135,9 +135,13 @@ OpenTee协助设备提供商在arm系列CPU上实现完整的TEE-OS环境支持.
 完成基于硬件的secure video path需要以下模块的共同支持:
 
  - 按照android drm plugin标准实现对应的plugin模型(playready/widevine)-android side.
+
  - 实现安全的TEE环境支持.
+
  - video process unit可以支持clear/secure video decode/display. 基于android omx plugin标准实现(5.0/6.0?).
+
  - 基于硬件的证书处理机制(某些运营商的证书会随设备出厂预装).
+
  - HDCP支持.
 
 -----
