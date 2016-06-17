@@ -145,24 +145,30 @@
 
 下表是Product定义变量表. 可以在Product Makefile中指定变量:
 
-    PRODUCT_AAPT_CONFIG:		创建package时的aapt配置.
-	PRODUCT_BRAND:				如果存在软件配置的运营商的商标.
-	PRODUCT_CHARACTERISTICS:	aapt的指定配置来允许加入变量指定的资源到package中.eg: tablet,nosdcard
+    PRODUCT_AAPT_CONFIG:创建package时的aapt配置.
 	
-	PRODUCT_COPY_FILES:			以source_path:destination_path\n关键字组成的列表. 编译product时source path内容会copy到dest path.
+	PRODUCT_BRAND:如果存在,则定义了软件配置的运营商的商标.
 	
-	PRODUCT_DEVICE:				device/board的工业设计的名字. 同board名字相同. 编译系统通过它来定位BoardConfig.mk. eg: tuna
+	PRODUCT_CHARACTERISTICS:aapt的指定配置来将变量指定的资源加入到package中.eg: tablet,nosdcard
 	
-	PRODUCT_LOCALES:			以下划线分隔的双字符语言代码. 双字符代码对描述多中用户语言配置,例如UI语言,时区,货币类型. 可设置多个支持的语言代码.当前标签中的第一个为product默认语言. eg: en_GB(english GreatBritish.) de_DE es_ES fr_CA
+	PRODUCT_COPY_FILES:以source_path:destination_path\n关键字组成的列表. 编译product时source path内容会copy到dest path.
 	
-	PRODUCT_MANUFACTURER:		生产厂家名字,例如:acme
-	PRODUCT_MODEL:				最终产品的终端用户可见型号.
-	PRODUCT_NAME:				完整产品的终端用户可见名字. 将会出现在Settings > About screen.	
+	PRODUCT_DEVICE:device/board的工业设计的名字. 同board名字相同. 编译系统通过它来定位BoardConfig.mk. eg: tuna
 	
-	PRODUCT_OTA_PUBLIC_KEYS:	OTA使用的公匙列表.
-	PRODUCT_PACKAGES:			装入系统的apk和模块列表.例如:Calendar Contacts
-	PRODUCT_PACKAGE_OVERLAYS:	指定使用默认资源或者product指定重载. eg: vendor/acme/overlay
+	PRODUCT_LOCALES:以下划线分隔的双字符语言代码. 双字符代码对描述多中用户语言配置,例如UI语言,时区,货币类型. 可设置多个支持的语言代码.当前标签中的第一个为product默认语言. eg: en_GB(english GreatBritish.) de_DE es_ES fr_CA
 	
-	PRODUCT_PROPERTY_OVERRIDES: 以格式为"key=value"的系统属性定义列表.
+	PRODUCT_MANUFACTURER:生产厂家名字,例如:acme
+	
+	PRODUCT_MODEL:最终产品的终端用户可见型号.
+	
+	PRODUCT_NAME:完整产品的终端用户可见名字. 将会出现在Settings > About screen.	
+	
+	PRODUCT_OTA_PUBLIC_KEYS:OTA使用的公匙列表.
+	
+	PRODUCT_PACKAGES:装入系统的apk和模块列表.例如:Calendar Contacts
+	
+	PRODUCT_PACKAGE_OVERLAYS:指定使用默认资源或者product指定重载. eg: vendor/acme/overlay
+	
+	PRODUCT_PROPERTY_OVERRIDES:以格式为"key=value"的系统属性定义列表.
 
 -----
