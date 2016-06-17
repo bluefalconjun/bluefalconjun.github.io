@@ -4,48 +4,55 @@
 --------
 **当前页面中对设备(device)和产品(product)的描述,仅对企业编译/产品团队创建全新项目开发有效.**
 
---------
+-----
+> **理解编译层级:**
 
-#### 理解编译层级:
+-----
 指定的系统架构(**arch**)上可以有多个板型(**board**). 基于指定板型上可以有多个产品(**product**).
 在每个编译级别上均可以单独定义并且指定当前级别的赋值.
 
+-----
 > **Product Layer:**
 
-实例:
+**实例:**
 
     myProduct, myProduct_eu, MyProduct_eu_fr
 
-描述:
+**描述:**
 **product**层定义相关的产品功能(software/module),例如那些模块/应用会被编译引用.支持那些语言/环境.多语言环境的配置等. 这是整个**product**的产品名称.**product-specific**变量在**product**定义Makefile中.  **product**可从另一个**product**继承.常见做法是创建一个包含所有**product**共有功能的**base product**. 然后基于这个**product**创建**product**变种. 例如:可以从**base product**创建两个**product**,分别使用不同的**radio**模块(CDMA/GSM).
 
+-----
 > **Board/Device Layer:**
 
-实例:
+-----
+**实例:**
 
     sardine,trout,goldfish.
-描述:
+**描述:**
 
 **device/board**层定义构成**device**的物理设备(**device**的工业设计).例如:北美的设备使用QWERTY键盘,法国则使用AZERTY键盘. 该层通常也包含不同的硬件原理图设计的区别. 包含不同板级的外设配置. 它的名字可以采用不同的代码名来区分不同的**board/device**配置.
 
+-----
 > **Arch Layer:**
 
-实例:
+-----
+**实例:**
 
     arm,x86,mips,arm64,x86_64,mips64.
-描述:
+**描述:**
 **arch**层定义了处理器的配置,即使用哪种系统/指令架构.
 
+-----
+> **使用编译变量:**
 
-
-####使用编译变量:
+-----
 当编译指定的**product**时,通常做法是定义一个最终产品的最小变量集合.
 在模块(**module**)定义中,通过对**`LOCAL_MODULE_TAGS`**标签赋值来指定. 这个标签可以赋值为单个/多个变量(**optional** /**debug**.**eng**).
 如果当前模块没有对**`LOCAL_MODULE_TAGS`**赋值以定义标签,默认为**optional**.标签为**optional**的模块,仅当它被**product**配置宏**`PRODUCT_PACKAGES`**引用时才会被编译/安装到系统中.
 
 当前定义的编译变量(build-variant):
 
-> **eng:**
+**eng:**
 
     缺省的编译选项.
 	装入标签的模块: eng / debug.
@@ -55,7 +62,7 @@
 	ro.kernel.android.checkjni=1
 	adb默认开启.
 
-> **user:**
+**user:**
 
     类似为最终release编译方式:
 	只有标签为user的module才会被安装.
@@ -64,32 +71,40 @@
 	ro.debuggable=0
 	adb默认关闭.
 
-> **userdebug:**
+**userdebug:**
 
 	同user相同.除了:
 	也装入标签为debug的模块.
 	ro.debuggable=1.
 	adb默认开启.
 
+-----
+> **建立product**
 
-
-####建立product
-
+-----
 以Nexus6为例描述如何设置一个**product**的Makefile.
 实际代码参考: [device/moto/shamu](https://android.googlesource.com/device/moto/shamu/+/android-5.1.1_r13)
 
-**编写Makefile:**
+-----
+> **编写Makefile:**
 
+-----
 1. 为**product**创建 device/**company_name**/**device_name**目录. 例如: device/moto/shamu. 这个目录包含了为了编译device所需的Makefile和源代码.
+
 2. 创建**device.mk** 这个Makefile定义**device**所需的文件和模块.
+
 3. 创建**product**定义的Makefile(**aosp_shamu.mk**)来指定基于当前**device**的特定的product. 
     参见shamu的Makefile, 这个**product**继承自 device/moto/shamu/device.mk 和 vendor/moto/shamu/device-vendor.mk. 同时指定product相关信息,例如name.brand.model.
+
 4. 创建**AndroidProducts.mk**来引用当前**product**的Makefile. 例子中只有一个**product**的Makefile被引用. 参见 device/moto/shamu/AndroidProducts.mk.
+
 5. 创建**BoardConfig.mk**文件来包含**Board**指定的配置. 参考 [device/moto/shamu/BoardConfig.mk](https://android.googlesource.com/device/moto/shamu/+/android-5.1.1_r13/BoardConfig.mk)
+
 6. 创建**vendorsetup.sh**文件,使用**`add_lunch_combo`** **`product_name-build-variant`** 将**product**加入到系统中.
+
 7. 按照该顺序,从**base device**中创建多个**product**变种.
 
-
+-----
 **aosp_shamu.mk:**
 
     # Inherit from the common Open Source product configuration
@@ -110,7 +125,7 @@
 	PRODUCT_PACKAGES += \
 	    Launcher3
 
-
+-----
 **AndroidProduct.mk:**
 
 	#
@@ -150,5 +165,4 @@
 	
 	PRODUCT_PROPERTY_OVERRIDES: 以格式为"key=value"的系统属性定义列表.
 
-
-test update.
+-----
