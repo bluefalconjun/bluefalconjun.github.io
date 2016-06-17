@@ -20,17 +20,17 @@
 
 -----
 
- - **Application Framework**
+ - **Application Framework**:
 **app**的代码存在于**app framework**层, 它通过**android.media**的API来和多媒体硬件互动.
 
- - **Binder IPC**
+ - **Binder IPC**:
 **Binder IPC**代理帮助多进程进行通讯, 它的代码位于[**frameworks/av/media/libmedia**](https://android.googlesource.com/platform/frameworks/av/+/android-5.1.1_r18/media/libmedia/) 目录, 并且以字符"I"开头. 
 
- - **Native Multimedia Framework**
+ - **Native Multimedia Framework**:
 在实现层, **stagefright**引擎缺省提供了软件编解码器, 供应商通过**OpenMax IL**层加入硬件编解码器支持. 
 参见[**frameworks/av/media**](https://android.googlesource.com/platform/frameworks/av/+/android-5.1.1_r18/media/).
 
- - **OpenMAX Integration Layer (IL)**
+ - **OpenMAX Integration Layer (IL)**:
 **OpenMax IL**层给**stagefright**提供了标准的方式来组织和使用特殊的基于硬件的多媒体编解码器. 这里称之为组件(**Component**). 
 实现方式是提供一个名为**libstagefrighthw.so**的插件. 它将硬件编解码器同**stagefright**连接起来. 它的实现必须符合**OpenMax IL**标准.
 
