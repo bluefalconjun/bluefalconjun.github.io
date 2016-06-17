@@ -28,7 +28,6 @@
 
  - **Native Multimedia Framework**
 在实现层, **stagefright**引擎缺省提供了软件编解码器, 供应商通过**OpenMax IL**层加入硬件编解码器支持. 
-
 参见[**frameworks/av/media**](https://android.googlesource.com/platform/frameworks/av/+/android-5.1.1_r18/media/).
 
  - **OpenMAX Integration Layer (IL)**
