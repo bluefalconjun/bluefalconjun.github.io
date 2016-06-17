@@ -107,18 +107,76 @@ hash树的大小(和对应的磁盘大小相关)不同于产生它的验证分�
 -----
 **Bundling the table signature into metadata**
 
-在将签名表和dm-verity表集成至
-Bundle the table signature and dm-verity table into verity metadata. The entire block of metadata is versioned so it may be extended, such as to add a second kind of signature or change some ordering.
+在将签名表和dm-verity表集成至验证元数据(**`verify metadata`**)的时候, 整个元数据block中可以附加版本信息, 这样可以进行扩展, 例如修改数据存放的顺序或者是加入另外一级的密钥加密.
 
-As a sanity check, a magic number is associated with each set of table metadata that helps identify the table. Since the length is included in the ext4 system image header, this provides a way to search for the metadata without knowing the contents of the data itself.
+在一次检查过程中, 每套相关表的元数据可以附加magic number. 由于整个元数据的长度是记录在ext4系统镜像头中, 这可以在不读取相关数据的内容的情况下进行元数据的搜索.
 
-This makes sure you haven't elected to verify an unverified partition. If so, the absence of this magic number will halt the verification process. This number resembles:
-0xb001b001
+magic number的加入可以保证当前对元数据的读取没有进入到未验证区域. 如果读取越界, magic number的值会打断验证操作. 
 
-The byte values in hex are:
+magic number的一个例子为:
+**`0xb001b001`**
 
-first byte = b0
-second byte = 01
-third byte = b0
-fourth byte = 01
-The following diagram depicts the breakdown of the verity metadata:
+ - first byte = b0
+ - second byte = 01 
+ - third byte = b0 
+ - fourth byte = 01
+
+下图示意元数据截断的方式:
+
+    <magic number>|<version>|<signature>|<table length>|<table>|<padding>
+    \-------------------------------------------------------------------/
+    \----------------------------------------------------------/   |
+                                |                                  |
+                                |                                 32K
+                           block content
+
+下表描述元数据的字段:
+
+<table>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+<th>Size</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>magic number</td>
+<td>used by fs_mgr as a sanity check</td>
+<td>4 bytes</td>
+<td>0xb001b001</td>
+</tr>
+<tr>
+<td>version</td>
+<td>used to version the metadata block</td>
+<td>4 bytes</td>
+<td>currently 0</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>the signature of the table in PKCS1.5 padded form</td>
+<td>256 bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>table length</td>
+<td>the length of the dm-verity table in bytes</td>
+<td>4 bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>table</td>
+<td>the dm-verity table described earlier</td>
+<td>`table length` bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>padding</td>
+<td>this structure is 0-padded to 32k in length</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+</tr>
+</table>
+
+
