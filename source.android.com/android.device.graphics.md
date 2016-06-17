@@ -1,45 +1,67 @@
+
 ###[**Graphics**](http://source.android.com/devices/graphics/index.html)
 
 ![Graphics HAL](http://source.android.com/devices/graphics/images/ape_fwk_hal_graphics.png)
 
+-----
 **android framework**通过使用厂商实现的图形驱动来提供多种2D和3D的**graphics**绘图API. 这些功能通过编入图形驱动的HAL来提供.
 
 app开发者通过两种方式向屏幕画图. **Canvas**/**OpenGL**. 参见**android graphics arch**来理解**android** **graphics**组件的功能.
 
-**android.graphics.Canvas**是一套开发者最常使用的2D图形API. **Canvas**完成了所有的标准和自定义的[**android.view.Views**](http://developer.android.com/reference/android/view/View.html)的绘图操作. 在Andriod中, 带有硬件加速支持的**Canvas API**由名为**OpenGLRenderer**的绘图库来完成. 它将**Canvas**调用转接到**OpenGl**的操作, **OpenGL**的操作可以在**GPU**上完成.
+**android.graphics.Canvas**是一套开发者最常使用的2D图形API. **Canvas**完成了所有的标准和自定义的[**android.view.Views**](http://developer.android.com/reference/android/view/View.html)的绘图操作. 
 
-从**Android** 4.0(**ICS**)开始,硬件加速的**Canvas**被缺省开启. 因此在此版本之后的设备均需要硬件**GPU**来支持**OpenGL ES2.0**.  查看[**Hardware Acceleration Guide**](https://developer.android.com/guide/topics/graphics/hardware-accel.html)来获取详细信息. 并区分硬件/软件绘图的不同路径方式.
+在Android中, 带有硬件加速支持的**Canvas API**由名为**OpenGLRenderer**的绘图库来完成. 它将**Canvas**调用转接到**OpenGL**的操作, **OpenGL**的操作可以在**GPU**上完成.
+
+从**Android** 4.0(**ICS**)开始, 硬件加速的**Canvas**被缺省开启. 因此在此版本之后的设备均需要硬件**GPU**来支持**OpenGL ES2.0**.  
+
+查看[**Hardware Acceleration Guide**](https://developer.android.com/guide/topics/graphics/hardware-accel.html)来获取详细信息. 并区分硬件/软件绘图的不同路径方式.
 
 除了**Canvas**之外,开发者绘图主要通过**OpenGL ES**直接向**surface**绘图. 开发者通过**android**提供的[**android.opgl**](http://developer.android.com/reference/android/opengl/package-summary.html)包来在SDK上完成GL实现,或者在[**Android NDK**](https://developer.android.com/tools/sdk/ndk/index.html)上完成**Native API**调用实现.
 
 Android开发人员可以通过[**drawElements Quality Program**](http://source.android.com/devices/graphics/testing.html)来测试**OpenGL ES的**功能.
 
 ----------
-####**Android graphics components**
-无论开发者使用何种绘图API, 所有的绘制操作均指向"**surface**". **surface**代表**buffer queue**的**producer**端, 常见的**consumer**端是**surfaceflinger**. **android**平台上创建的每一个**window**都包含有**surface**. 所有课件的**surfaces**绘制均由**surfaceflinger**进行合成并绘制到屏幕上.
+> **Android graphics components**
+
+-----
+无论开发者使用何种绘图API, 所有的绘制操作均指向"**surface**". 
+
+**surface**代表**buffer queue**的**producer**端, 常见的**consumer**端是**surfaceflinger**. **android**平台上创建的每一个**window**都包含有**surface**. 所有Activity的**surfaces**绘制均由**surfaceflinger**进行合成并绘制到屏幕上.
 
 下图描述了关键组件是如何联和工作的:
+
 ![How Surface Are Rendered](http://source.android.com/devices/graphics/images/ape_fwk_graphics.png)
 
 以下是主要的组件:
 
+-----
 > **Image Stream Producers**
 
+-----
 图像流生产方是可以产生提供给处理方图像数据的任何模块,例如**OpenGL ES**,**Canvas 2D**或者是**mediaserver**内的视频解码器.
 
 > **Image Stream Consumers**
 
-最常见的图像流处理方是**Surfaceflinger**, 它是在系统中通过**Window Manager**提供的信息对所有可见的**surface**进行处理,并合成到显示上的服务.
-**Surfaceflinger**是系统中唯一可以对显示内容进行处理的服务. 它使用**OpenGl**和**Hardware Composer**来完成一组**surface**的合成.
+最常见的图像流处理者是**Surfaceflinger**, 它在系统中通过**Window Manager**提供的信息对所有可见的**surface**进行处理, 并提供合成surface到显示上的服务.
+
+**Surfaceflinger**是系统中唯一可以对显示内容进行处理的服务. 它使用**OpenGl**和**Hardware Composer**来完成多组**surface**的合成.
 
 其他的**OpenGl**应用同样可以处理图像流, 例如**camera**应用可以处理**camera**预览数据, 非GL的应用同样可以是处理方, 例如**ImageReader**类.
 
+-----
 > **Window Manager**
 
-**window manager**是一个包含各类**view**的控制窗口的系统服务. 每个**window**均包含有**surface**.  该系统服务监视每个**window**的生存期,输入/焦点转移事件,屏幕方向,颜色过渡,动画,位置等多方面. **Window Manager**将所有的**window**信息发送给**surfaceflinger**, 后者可以通过这些信息来完成显示上的**surface**合成操作.
+-----
+**window manager**是一个包含各类**view**的控制窗口的系统服务. 每个**window**均包含有**surface**.  
 
+该系统服务监视每个**window**的生存期,输入/焦点转移事件,屏幕方向,颜色过渡,动画,位置等多方面. 
+
+a**Window Manager**将所有的**window**信息发送给**surfaceflinger**, 后者可以通过这些信息来完成显示上的**surface**合成操作.
+
+-----
 > **Hardware Composer**
 
+-----
 **Hardware Composer**是显示子系统的硬件抽象.  **surfaceflinger**能够通过委托它完成特定的合成操作, 来减低**OpenGL**和**GPU**的工作量.  **surfaceflinger**也可以通过作为**OpenGL ES**的客户端来完成任务.  在这种情况下, **OpenGL ES**可以帮助完成合成的操作,这要比完全使用**GPU**来进行操作更为节省资源.
 
 **Hardware Composer**另外负责所有**Android**显示系统的绘制工作. 它必须支持events. **VSYNC**就是其中之一. 另外一种event是即插即用的**HDMI**热插拔信号.
