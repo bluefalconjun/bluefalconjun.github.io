@@ -43,7 +43,7 @@ verified boot相关的术语词汇表
 -----
 **Classes**
 
-verified boot按照设备提供商实现标准推荐的完整性, 分为两类实现方式.
+verified boot按照设备提供商实现推荐标准的完整性, 分为两类.
 
 Class A在到分区验证的整个启动链中均实现了verified boot. 该实现必须支持**`LOCKED`**设备状态, 和**`GREEN/RED`** 启动状态.
 
@@ -64,6 +64,8 @@ Bootloader必须使用基于硬件信任机制来进行验证. 为了bootloader�
  - **`GREEN`**. 说明当前已经从bootloader到验证分区的全链表验证均正确完成, 包含bootloader, boot分区和其他所有的验证分区(system/vendor/data/xx).
 
  - **`YELLOW`**. 说明boot分区已经通过了它自带的证书校验, 该签名是有效的. 启动过程中, bootloader将会显示提示, 并且打印出公钥的指纹.
+
+**`[Tips: 在某些情况下, 设备提供商可以通过review第三方发行image的情况. 提供密钥给第三方发行相关image. 该密钥能够被设备提供商的bootloader所验证.]`**
 
  - **`ORANGE`**. 说明当前设备已经被自由修改过. 设备验证工作留给用户自行确认. bootloader必须显示警告信息. 然后进行boot动作.
 
@@ -98,6 +100,8 @@ recovery分区的验证必须遵循同样的机制.
 **`bootloader`**是设备状态的监护者, 同时它负责要初始化TEE环境, 并且对其进行根(**`root`**)信任绑定.
 
 同时也很重要的是, bootloader需要验证boot/recovery分区的正确性, 并且在需要执行其分区的kernel之前, 对相关的验证结果显示警告/提示信息, 用以提示用户当前的启动状态(**`Boot State`**).
+
+**`[Tips: 即使设备提供商不实现UNLOCKED功能. 对于bootloader的需求仍然存在, 设备本身/运行在设备上的敏感应用均需要确认处于安全环境.]`**
 
 -----
 **Changing device state**
@@ -143,6 +147,8 @@ LOCKED到UNLOCKED状态的转换可以是因为开发者需要解除设备验证
 以上操作将改变TEE派生出来的密钥. 以分区加密来作为例子, 这可以在device状态改变时保护用户数据被解密.
 
 **注意: 改变TEE派生的密钥意味着当系统软件/设备状态改变时, 加密的用户数据将无法被访问, 因为TEE将尝试使用收到的公钥来对加密数据进行解密.**
+
+**`[Tips: 使用相关验证同样是保证TEE image正确性的必须要求.]`**
 
 -----
 **Booting into recovery**
