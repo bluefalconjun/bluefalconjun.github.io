@@ -478,7 +478,7 @@ TV Input Manager存储每个分级的TVContentRating(内容分级), 并在isRati
         Mutex::Autolock l(device_mutex);
         ssize_t idx = devices.indexOfKey(device_id);
         if (idx >= 0) {
-            mrvl_tv_device* tv_device = devices.valueFor(device_id);
+            com_tv_device* tv_device = devices.valueFor(device_id);
             *num_configurations = 1;
             // TODO: Should we malloc it
             *configs = const_cast<tv_stream_config_t*>(&(tv_device->config));
@@ -494,7 +494,7 @@ TV Input Manager存储每个分级的TVContentRating(内容分级), 并在isRati
         Mutex::Autolock l(device_mutex);
         ssize_t idx = devices.indexOfKey(device_id);
         if (idx >= 0) {
-            mrvl_tv_device* tv_device = devices.valueFor(device_id);
+            com_tv_device* tv_device = devices.valueFor(device_id);
             if (tv_device->device != NULL) {
                 ALOGE("Device %d is already opened", device_id);
                 return -EEXIST;
