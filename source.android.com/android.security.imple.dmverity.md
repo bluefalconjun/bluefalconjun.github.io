@@ -134,48 +134,46 @@ magic number的一个例子为:
 
 <table>
 <tr>
-<th>Field</th>
-<th>Purpose</th>
-<th>Size</th>
-<th>Value</th>
+<th>字段</th>
+<th>目的</th>
+<th>长度</th>
+<th>数值</th>
 </tr>
 <tr>
 <td>magic number</td>
-<td>used by fs_mgr as a sanity check</td>
+<td>fs_mgr用来进行检查认证</td>
 <td>4 bytes</td>
 <td>0xb001b001</td>
 </tr>
 <tr>
 <td>version</td>
-<td>used to version the metadata block</td>
+<td>对metadata block进行版本定义</td>
 <td>4 bytes</td>
-<td>currently 0</td>
+<td>当前为 0</td>
 </tr>
 <tr>
 <td>signature</td>
-<td>the signature of the table in PKCS1.5 padded form</td>
+<td>以PKCS1.5填充方式签名的表</td>
 <td>256 bytes</td>
 <td></td>
 </tr>
 <tr>
 <td>table length</td>
-<td>the length of the dm-verity table in bytes</td>
+<td>dm-verity表的长度(字节)</td>
 <td>4 bytes</td>
 <td></td>
 </tr>
 <tr>
 <td>table</td>
-<td>the dm-verity table described earlier</td>
-<td>`table length` bytes</td>
+<td>上面描述的verity表</td>
+<td>`table length`长度</td>
 <td></td>
 </tr>
 <tr>
 <td>padding</td>
-<td>this structure is 0-padded to 32k in length</td>
+<td>填充至32k边界的0值</td>
 <td></td>
 <td>0</td>
-</tr>
-<tr>
 </tr>
 </table>
 
