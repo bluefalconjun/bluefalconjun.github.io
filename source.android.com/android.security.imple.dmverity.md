@@ -177,4 +177,13 @@ magic number的一个例子为:
 </tr>
 </table>
 
+-----
+**Optimizing dm-verity**
 
+dm-verity操作是比较耗时的, 以下为优化建议:
+
+在kernel中打开 **`NEON SHA-2 for ARMv7`** 和 **`SHA-2 extensions for ARMv8`**.
+
+配合当前设备的数据结构, 使用不同凡是的预读取/预装载簇数据来进行优化.
+
+-----
