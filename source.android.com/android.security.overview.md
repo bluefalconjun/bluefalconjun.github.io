@@ -1,8 +1,8 @@
 
 ###[**Security**](http://source.android.com/security/index.html)
 
-
-####Security
+-----
+**Security**
 
 -----
 **`android`**作为现代的开放移动平台, 其中运行了使用各类硬件和软件栈的应用, 使用通过平台向用户提供创新和有价值的服务. 为了保护其中的内容, 平台必须提供能够保障用户安全的 应用/数据/设备/网络环境. 
@@ -17,11 +17,13 @@
 
 这个设计包含了预期攻击者使用标准的攻击方法, 例如社会工程学的方法,诱导用户安装恶意软件. 或者攻击者通过攻击**`android`**设备上的第三方软件进行攻击. 
 
+**`[Tips: 设备提供商应该尽量考虑用户可能会在平台上运行未知来源的app, 并按照提示赋予升级权限. 即使在这种情况下, 系统也应该能够保护敏感的用户信息/其他应用信息.]`**
+
 **`android`**被设计为尽量减少这类攻击的可能性, 并且在攻击真的成功时尽量降低其危害.
 
 该文档提供**`android`**安全程序的大纲, 描述**`android`**安全系统的架构基本点, 并处理大部分常见的系统架构和安全分析问题. 
 
-该文档专注于讨论**`android`**核心平台的安全功能点. 不会对具体特定的应用安全问题进行讨论. 推荐使用 创建/发行 **`android`**设备的最佳实践来进行参考, 开发**`android`**应用相关内容不在这个范围之内.
+该文档专注于讨论**`android`**核心平台的安全功能点. 不会对具体特定的应用安全问题进行讨论. 推荐使用 创建/发行 **`android`**设备的最佳做法来进行参考, 开发**`android`**应用相关内容不在这个范围之内.
 
 -----
 > **Background**
@@ -46,10 +48,15 @@
 
  - **`Android Application Runtime:`** Android应用通常使用**`java`**语言编写, 并运行在**`Dalvik(ART)`**虚拟机上. 同时, 包括android核心服务的许多应用都是**`native`**应用(**`linux process`**), 或者以**`native`**库的方式来提供支持(linux library). 虚拟机和native服务均在同样的安全环境中运行, 受限于在同样的应用沙盒中.  每个应用均使用文件系统上的独占空间, 来进行数据库或者原始文件的读写. 
 
+**`[Tips: 以上软件模块的划分中, 所有列出的应用/进程均处于android安全保护模型中.]`**
+
 -----
 Android应用扩展了android系统的核心功能. 有两种主要的应用源:
 
  - **`Pre-Installed Applications`**: android设备预装整套的应用集和, 包含有电话/邮件/日历/浏览器/通讯录等. 这些应用同时为用户和其他第三方应用提供服务. 预安装应用包含在AOSP开发代码中, 或者由平台OEM为特定设备进行开发.
+
+**`[Tips: 平台OEM会针对特定平台的硬件设置/特殊功能/同运营商的整合等情况, 加入更多的预装应用.]`**
+**`[Tips: 平台OEM也会使用修改过的AOSP应用, 来取代原生AOSP预装应用. 例子: 设备相关的PQ设置/ 原生AOSP 不支持的功能 PPPOE.]`**
 
  - **`User-Installed Applications`**: android提供开放的开发环境,对第三方应用开发进行支持. **`Google Play`**提供给用户数十万的应用使用.
 
@@ -59,6 +66,8 @@ Android应用扩展了android系统的核心功能. 有两种主要的应用源:
  - **[Google Play](https://play.google.com/store)**: **`Google Play`**是一套服务集合, 用户通过它在android设备或者web上来查找/安装/购买应用. 它帮助开发者达到用户需求. 同时它也提供评价预览功能, 应用授权([license verfication](https://developer.android.com/guide/publishing/licensing.html)), 应用安全检查和其他安全功能.
  
  - **`Android Updates`**: android更新服务为设备提供新功能或者安全功能更新, 包含通过web的更新或者OTA更新.
+
+**`[Tips: OTA更新分为平台设备软件的OTA和用户自行安装app的OTA, 其中平台设备的OTA服务由设备提供商来完成. ]`**
 
  - **`Application Services`**: 基于Frameworks的服务允许android应用使用云端服务的功能, 例如备份([back up](https://developer.android.com/guide/topics/data/backup.html))程序数据/设置, 或者云到端的([GCM](https://developers.google.com/cloud-messaging/))消息机制.
 
@@ -79,7 +88,12 @@ Android安全程序的关键部分有以下几点:
 
  - **`Open Source and Community Review`**: **开源/社区评审**. AOSP项目为所有有兴趣的团体提供安全评审的公告板. 同时Android选用经过了外部严格安全评审的系统模块, 例如 linux kernel. Google Play也提供了专为开发者/厂家提供应用信息到终端客户的论坛. 
 
+**`[Tips: 以上描述的评审/提交 是AOSP代码相关的, 部分平台提供商也会向AOSP项目提交patch/review, 经过android社区review之后一般会加入到主干中, 在下一版release.]`**
+
  - **`Incident Response`**: **事件响应**. 即使存在以上的预防措施, 安全问题仍然会在产品供货后出现, 因此Android项目建立了一个全面的安全响应机制. 全职的Android安全小组监视android上/和通用平台上的安全漏洞问题. 通过查看已泄漏的漏洞信息, android安全小组使用快速响应机制来保护所有android用户, 使得已知的漏洞造成最少的潜在伤害. 这些基于云端的响应机制包括进行系统安全更新(OTA), 从Google Play中下架特定应用或者从特定地区的Android设备中移除应用. 
+
+**`[Tips: http://heartbleed.com/ 2014年爆出的开源openssl实现漏洞.]`**
+**`[Tips: 基于此, android从5.1起尝试切换实现为boringssl. https://android.googlesource.com/platform/external/boringssl/+/master]`**
 
 -----
 
@@ -99,5 +113,9 @@ Android力求成为最安全和易用的移动设备操作系统, 它通过重�
  - 安全的进程间通讯. 
  - 应用签名
  - 应用定义/用户批准的权限管理机制.
+
+**`[Tips: kernel的完整安全性是android安全的基础.]`**
+**`[Tips: 设备提供商必须遵循标准应用的方式开发/分发预装应用.]`**
+**`[Tips: 内部服务在可能的情况下使用标准的binder机制进行通讯. 参考: http://www.jianshu.com/p/36e0c182adb2 ]`**
 
 -----
