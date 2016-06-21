@@ -189,3 +189,28 @@ dm-verity操作是比较耗时的, 以下为优化建议:
 **`[Tips: dm-verity可以不在设备中实现, 但是它的实现方案可以作为设备提供商实现可验证的设备管理的例子.]`**
 
 -----
+
+-----
+**实现方式:**
+
+![标准android设备分区结构](https://docs.google.com/drawings/d/19NQ4wnl_FrfLwbyXL7ZV8hy_5GULjcwGYntJf6IyDVI/pub?w=1440&h=1080)
+
+按照以上常见的android系统分区实现, 设备启动和验证的流程如下:
+
+ 1. hw_rom(OTP)中包含有写入一次的, 与当前芯片绑定的验证流程代码(包含验证密钥).
+ - 该验证密钥同bootloader的签名密钥是key-pair.
+ - 使用该密钥对bootloader image进行验证.
+ - 只有当bootloader通过验证, CPU才被允许执行bootloader(sys_init).
+
+
+ 2. bootloader image中包含所有资源的初始化操作. 同时, 它使用hw_rom(OTP)的密钥, 对boot.img(kernel) / tee.image(secure kernel) 进行验证.
+ - boot.img中包含 kernel + ramdisk. 按照预定义的方式生成头信息, MD5信息. 然后将元数据以签名密钥进行签名.
+ - kernel 和 tee.img 是 secure 最重要的保证.
+
+ 3. kernel启动完成后, 按照boot分区内的fstab对/system /vendor分区进行挂载.
+ - /system /vendor分区一般没有使用dm-verity机制(启动时间过长). 而是使用常见的方式生成image(SIMG2IMG). android可使用 raw-image/sparse-image.
+ - 设备提供商可以在android system vold功能中自定加入对system/vendor image校验的机制.
+
+ 4. android framework启动完成后, 对/data /cache 和 其他分区 进行挂载.
+
+-----
