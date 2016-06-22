@@ -8,7 +8,7 @@ ___
 
 >**source.android.com**
 
-**`translate ( http://source.android.com ) to chinese and try to add my own experience`**
+**`基于android官方文档 ( http://source.android.com ) 翻译学习并加入一些经验参考.`**
 
 **source**
 
@@ -51,19 +51,20 @@ ___
 
  - [bashrc](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/bashrc.md)
  - [vim](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/vim.md)
- **`btw, i use 4 blanks for indentation`**
+ **`//btw, i use 4 blanks for indentation`**
  - [shadowsocks](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/shadowsocks.md)
  - [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/atom.md)
  - [mactype](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/mactype.md)
  - [synergy](http://synergy-project.org/)
-**`this is a non-free tool to share one set of keyboard/mouse to several pcs.`**
+**`//this is a non-free tool to share one set of keyboard/mouse to several pcs.`**
 
 >**collect**
 
 **`i wish i can learn more but everyone is out of time`**
 
- - [encryption study](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/encryption.study.md)
- - [how to c 2016 by matt.sh](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/lang.c.howtoc2016.md)
+ - [encryption study](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/encryption.study.md)  **`//基于android security顺便学习了加解密的基础知识.`**
+ - [how to c 2016 by matt.sh](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/lang.c.howtoc2016.md) **`//关于c代码编写的一些现代建议.`**
+ - [long names are long](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/long.names.are.long.md) **`//翻译自关于代码中长命名的建议.`**
 
 >**system**
 
