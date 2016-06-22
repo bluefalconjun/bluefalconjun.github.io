@@ -56,7 +56,7 @@ ___
  - [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/atom.md)
  - [mactype](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/mactype.md)
  - [synergy](http://synergy-project.org/)
-**`//this is a non-free tool to share one set of keyboard/mouse to several pcs.`**
+**`//Xthis is a non-free tool to share one set of keyboard/mouse to several pcs.`**
 
 >**collect**
 
