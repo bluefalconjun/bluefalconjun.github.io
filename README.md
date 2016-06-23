@@ -73,7 +73,7 @@
  - [encryption study](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/encryption.study.md)    **`//基于android security顺便学习了加解密的基础知识.`**
  - [how to c 2016 by matt.sh](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/lang.c.howtoc2016.md)   **`//关于c代码编写的一些现代建议.`**
  - [long names are long](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/long.names.are.long.md)    **`//翻译自关于代码中长命名的建议.`**
- - [18lessons.in.13y.debug](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/18lessons.in.13y.debug.md)    **`//13年debug中需要的18课.`**
+ - [18lessons.from.13y.debug](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/18lessons.from.13y.debug.md)    **`//13年debug中学到的18课.`**
 
 -----
 >**system**
