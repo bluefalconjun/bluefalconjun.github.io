@@ -5,7 +5,7 @@
 原文请参见[**`这里`**](https://henrikwarne.com/2016/06/16/18-lessons-from-13-years-of-tricky-bugs/?utm_source=wanqu.co&utm_campaign=Wanqu%20Daily&utm_medium=website)
 
 -----
-在[**`从你的bug中学习`**](https://henrikwarne.com/2016/04/28/learning-from-your-bugs/)一文中, 我描述了我是如何记录我所遇到过的有趣的bug的. 近期我回顾了194项记录(在过去的13年里), 来理解从中学到了那些教训. 这里是最重要的一些教训. 分成编码,测试和debug这三类.
+在[**`从你的bug中学习`**](https://henrikwarne.com/2016/04/28/learning-from-your-bugs/)一文中, 我描述了如何记录所遇到过的有趣的bug的. 近期我回顾了194项记录(在过去的13年里), 来理解从中学到了那些经验. 这里是最重要的经验. 分成编码,测试和debug这三类.
 
 -----
 ![pic1](https://henrikwarne1.files.wordpress.com/2016/06/dsc_1104.jpg?w=300&h=225)
@@ -22,7 +22,7 @@
  - 如果未能接收该事件会发生什么?
  - 如果该事件在一次处理中发生两次会怎样?
 
-    即使在通常情况下以上情况不会发生, 但是系统中其他模块的bug(尤其是交互系统)可能会导致它们出现.
+    即使通常时候以上情况不会发生, 但是系统中其他模块的bug(尤其是交互系统)可能会导致它们出现.
 
  2. 太早发生.
 
