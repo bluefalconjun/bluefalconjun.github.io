@@ -5572,6 +5572,7 @@ taipei.gov.tw
 ||stackedit.io
 ||tumblr.com
 ||live.com
+||xvideo.com
 !do not use proxy
 @@||montage-tech.com
 @@||192.168.32.17
