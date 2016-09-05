@@ -42,6 +42,7 @@
  - [trusty](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.trusty.md)
  - [verified boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifiedboot.md)
  - [verifying boot](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifyingboot.md)
+ - [file based encryption](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.encryption.filebased.md)
 
 -----
 **compatibility**
