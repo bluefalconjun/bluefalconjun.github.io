@@ -9,6 +9,8 @@
 >**source.android.com**
 
 **`基于android官方文档 ( http://source.android.com ) 翻译学习并加入一些经验参考.`**
+**`最后更新基于android 7.0, 未全部完成.`**
+
 
 -----
 **source**
