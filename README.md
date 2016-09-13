@@ -22,7 +22,8 @@
 -----
 **device**
 
- - [device arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md)
+ - [interface & arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md)
+ - [audio](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.audio.md)
  - [drm](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.drm.md)
  - [graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.graphics.md)
  - [media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.md)
