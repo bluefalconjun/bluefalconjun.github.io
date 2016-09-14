@@ -11,6 +11,7 @@
 在以上的基础上, TIF使用AudioPort相关的信息来选择使用音频路由处理的API.
 
 ![TIF audio](http://source.android.com/devices/audio/images/ape_audio_tv_tif.png)
+
 **`Figure 1. TV Input Framework (TIF)`电视输入框架**
 
 -----
@@ -162,6 +163,7 @@ Audio HAL扩展中关于audio路由API部分的定义在以下文件中:
 当TV tuner被激活时, audio路由API将为tuner和默认的输出(如:扬声器)建立audio patch. tuner的输出并需要进行解码, 但是最终的音频输出将会同软件的输出流进行混合播放(电视播放时,使用按键进行操作同时输出按键音).
 
 ![tv tuner to speaker](http://source.android.com/devices/audio/images/ape_audio_tv_tuner.png)
+
 **`Figure 2. TV tuner同扬声器输出的Audio Patch.`**
 
 **HDMI OUT during live TV**
@@ -169,6 +171,7 @@ Audio HAL扩展中关于audio路由API部分的定义在以下文件中:
 用户在观看直播电视时, 将输出切换至HDMI音频输出(此时系统接收到**`Intent.ACTION_HDMI_AUDIO_PLUG`广播**). 此时所有的流的输出设备将切换至**`HDMI_OUT`**端口, 由TIF管理器将已存在的tuner audio patch的sink端口切换至HDMI_OUT端口.
 
 ![hdmi out](http://source.android.com/devices/audio/images/ape_audio_tv_hdmi_tuner.png)
+
 **`Figure 3. 直播电视在HDMI_OUT时的Audio Patch.`**
 
 -----
