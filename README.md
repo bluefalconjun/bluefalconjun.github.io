@@ -20,7 +20,7 @@
  - [git & repo](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.source.developing.gitrepo.md)
 
 -----
-**device**
+**device.interfaces**
 
  - [interface & arch](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md)
  - [audio](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.audio.md)
@@ -28,9 +28,11 @@
  - [graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.graphics.md)
  - [media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.md)
  - [media framework hardening](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.framework.md)
- - [ota](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tech.ota.md)
- - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
+  - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
  - [tv audio](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.audio.md)
+
+**device.core tech**
+- [ota](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tech.ota.md)
 
 -----
 **security**
