@@ -28,7 +28,7 @@
  - [graphics](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.graphics.md)
  - [media](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.md)
  - [media framework hardening](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.framework.md)
-  - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
+ - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
  - [tv audio](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.audio.md)
 
 **device.core tech**
