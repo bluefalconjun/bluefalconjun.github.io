@@ -30,6 +30,7 @@
  - [media framework hardening](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.framework.md)
  - [ota](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tech.ota.md)
  - [tv](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md)
+ - [tv audio](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.audio.md)
 
 -----
 **security**
