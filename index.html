@@ -1,30 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>bluefalconjun.github.io by bluefalconjun</title>
+    <meta name="description" content="bluefalconjun.github.io : ">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>bluefalconjun.github.io</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header class="without-description">
-        <h1>bluefalconjun.github.io</h1>
-        <p></p>
-        <p class="view"><a href="https://github.com/bluefalconjun">View the Project on GitHub <small>bluefalconjun</small></a></p>
-        <ul>
-          <li class="single"><a href="https://github.com/bluefalconjun/bluefalconjun.github.io">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/bluefalconjun">View on GitHub</a>
+
+          <h1 id="project_title">bluefalconjun.github.io</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h2>
 <a id="code-is-poetry" class="anchor" href="#code-is-poetry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong><code>Code is Poetry</code></strong>
 </h2>
@@ -39,7 +41,8 @@
 <p><strong>source.android.com</strong></p>
 </blockquote>
 
-<p><strong><code>基于android官方文档 ( http://source.android.com ) 翻译学习并加入一些经验参考.</code></strong></p>
+<p><strong><code>基于android官方文档 ( http://source.android.com ) 翻译学习并加入一些经验参考.</code></strong>
+<strong><code>最后更新基于android 7.0, 未全部完成.</code></strong></p>
 
 <hr>
 
@@ -53,15 +56,23 @@
 
 <hr>
 
-<p><strong>device</strong></p>
+<p><strong>device.interfaces</strong></p>
 
 <ul>
-<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md">device arch</a></li>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.arch.md">interface &amp; arch</a></li>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.audio.md">audio</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.drm.md">drm</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.graphics.md">graphics</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.md">media</a></li>
-<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tech.ota.md">ota</a></li>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.media.framework.md">media framework hardening</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.md">tv</a></li>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tv.audio.md">tv audio</a></li>
+</ul>
+
+<p><strong>device.core tech</strong></p>
+
+<ul>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.device.tech.ota.md">ota</a></li>
 </ul>
 
 <hr>
@@ -82,6 +93,7 @@
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.trusty.md">trusty</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifiedboot.md">verified boot</a></li>
 <li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.verifyingboot.md">verifying boot</a></li>
+<li><a href="https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/source.android.com/android.security.encryption.filebased.md">file based encryption</a></li>
 </ul>
 
 <hr>
@@ -162,10 +174,15 @@
 <p><strong><code>Code is Poetry</code></strong></p>
       </section>
     </div>
-    <footer>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
