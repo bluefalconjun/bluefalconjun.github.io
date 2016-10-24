@@ -2,9 +2,10 @@ _*[Back Home](https://bluefalconjun.github.io)*_
 ***  
 _**Chrome:**_  
 
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg -i google-chrome-stable_current_xxx.deb
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    sudo apt-get update 
+    sudo apt-get install google-chrome-stable
 
 ***  
 _*[Back Home](https://bluefalconjun.github.io)*_  
