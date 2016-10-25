@@ -37,9 +37,7 @@ _*[Back Home](https://bluefalconjun.github.io)*_
 
     [url "ssh://$username@$ipaddr:29418"]
         insteadof = ssh://$ipaddr //this is for quick replace some cmd line.
-
-
-
+    
 
 
 ~/.gitcm.template
