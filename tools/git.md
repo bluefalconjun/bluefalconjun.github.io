@@ -36,8 +36,8 @@ _*[Back Home](https://bluefalconjun.github.io)*_
         helper = cache --timeout=3600000 //this is for github to record your username/pwd        
 
     [url "ssh://$username@$ipaddr:29418"]
-        insteadof = ssh://$ipaddr //this is for quick replace some cmd line.
-    
+        insteadof = ssh://$ipaddr //this is for quick replace some cmd line.
+        
 
 
 ~/.gitcm.template
