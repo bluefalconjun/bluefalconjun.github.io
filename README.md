@@ -68,28 +68,6 @@
  - [long names are long](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/long.names.are.long.md)    **`//翻译自关于代码中长命名的建议.`**
  - [18lessons.from.13y.debug](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/collect/18lessons.from.13y.debug.md)    **`//13年debug中学到的18课.`**
 
------
->**tools**
-
-**`every time you need 3 days to set up your own working env. so be ware of changing PC/Company`**
-
------
- - [bashrc](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/bashrc.md)
- - [vim](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/vim.md)
- **`//btw, i use 4 blanks for indentation`**
- - [shadowsocks](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/shadowsocks.md)
- - [atom](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/atom.md)
- - [mactype](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/tools/mactype.md)
- - [synergy](http://synergy-project.org/)
-**`//this is a non-free tool to share one set of keyboard/mouse to several pcs.`**
-
------
->**system**
-
-**`win7 with mactype is good, mac air is also good with terminal, ubuntu is so slow...`**
-
------
- - [ubuntu](https://github.com/bluefalconjun/bluefalconjun.github.io/blob/master/system/ubuntu.md)
 
 -----
 **```Code is Poetry```**
