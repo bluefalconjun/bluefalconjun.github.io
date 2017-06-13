@@ -2,24 +2,25 @@
 ### [**兼容性测试套件**](http://source.android.com/compatibility/cts/index.html)
 
 内容
-CTS如何工作?
-流程
-测试用例类型
-涉及的领域
+
+ - CTS如何工作?
+ - 流程
+ - 测试用例类型
+ - 涉及的领域
 
 -----
 #### CTS如何工作?
 
 -----
-兼容性测试套件(CTS)是一个免费的, 商业级的测试套件, 请在该地址[下载](https://source.android.com/compatibility/cts/downloads.html). CTS代表了设备兼容性的机制.
+兼容性测试套件(CTS)是一个免费的, 商业级的测试套件, 请在该地址[下载](https://source.android.com/compatibility/cts/downloads.html). CTS代表了设备满足兼容性的机制.
 
-CTS运行在桌面机器上并直接在连接的设备或仿真器执行相关的测试用例. CTS为一组被设计成方便测试工程师集成到设备的（例如通过连续的构建系统CI）日常工作流程中的的单元测试集, 。它的目的是尽早揭示的不兼容性，并确保软件仍然是整个开发过程兼容.
+CTS运行在桌面机器上并直接在连接的设备或仿真器执行相关的测试用例. CTS为一组被设计成方便测试工程师集成到设备的（例如通过连续的构建系统CI）日常工作流程中的的单元测试集, 。它的目的是尽早揭示设备驱动的不兼容性，并确保软件在整个开发过程是兼容的.
 
-The CTS is an automated testing harness that includes two major software components:
+CTS是自动测试工具包括以下两个主要的软件组件：
 
-The CTS tradefed test harness runs on your desktop machine and manages test execution.
-Individual test cases are executed on the Device Under Test (DUT). The test cases are written in Java as JUnit tests and packaged as Android .apk files to run on the actual device target.
-The Compatibility Test Suite Verifier (CTS Verifier) is a supplement to the CTS available for download. CTS Verifier provides tests for APIs and functions that cannot be tested on a stationary device without manual input (e.g. audio quality, accelerometer, etc).
+CTS交互测试工具运行在桌面计算机上，并管理执行测试项。 单独的测试用例在被测设备（DUT）上执行。 测试用例以Java代码进行编写为JUnit测试，并打包为Android .apk文件，安装到实际的设备目标上运行。 
+
+兼容性测试套件验证器（CTS Verifier）是可供下载的CTS的补充。 CTS Verifier提供的API和功能的测试不能在没有手动输入（例如音频质量，加速度计等）的固定设备上测试。
 
 The CTS Verifier is a tool for manual testing and includes the following software components:
 
