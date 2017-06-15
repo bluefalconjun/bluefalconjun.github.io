@@ -8,6 +8,7 @@
  - 测试用例类型
  - 涉及的领域
 
+
 -----
 #### CTS如何工作?
 
@@ -18,40 +19,74 @@ CTS运行在桌面机器上并直接在连接的设备或仿真器执行相关�
 
 CTS是自动测试工具包括以下两个主要的软件组件：
 
-CTS交互测试工具运行在桌面计算机上，并管理执行测试项。 单独的测试用例在被测设备（DUT）上执行。 测试用例以Java代码进行编写为JUnit测试，并打包为Android .apk文件，安装到实际的设备目标上运行。 
+ - CTS交互测试工具运行在桌面计算机上，并管理执行测试项。 
+ - 单独的测试用例在被测设备（DUT）上执行。 测试用例使用Java代码进行编写为JUnit测试，并打包为Android .apk文件，安装到实际的设备目标上运行。 
 
-兼容性测试套件验证器（CTS Verifier）是可供下载的CTS的补充。 CTS Verifier提供的API和功能的测试不能在没有手动输入（例如音频质量，加速度计等）的固定设备上测试。
+兼容性测试套件验证器（CTS Verifier）是可供[下载](https://source.android.com/compatibility/cts/downloads.html)的CTS的补充。 CTS Verifier将对某些在不通过手动输入则无法进行测试的API进行测试, 例如音频质量，加速度计等）。
 
-The CTS Verifier is a tool for manual testing and includes the following software components:
+CTS验证器是用于手动测试的工具，包括以下软件组件：
 
-The CTS verifier app that is executed on the DUT and collects the results.
-The executable(s) or script(s) that are executed on the desktop machine to provide data or additional control for some test cases in the CTS Verifier app.
-Workflow
+ - 在DUT上执行的CTS验证程序应用程序，并收集结果。 
+ - 在桌面计算机上执行的可执行文件或脚本，用于为CTS Verifier应用程序中的某些测试用例提供数据或附加控制。
 
-CTS flow
-Figure 1. How to use CTS
 
-This diagram summarizes CTS workflow. Please refer to the subpages of this section starting with Setup for detailed instructions.
+----
+#### 工作流程
 
-Types of test cases
+----
+该图总结了CTS工作流程。有关详细说明，请参阅本节的子页面，从[设置](https://source.android.com/compatibility/cts/setup.html)开始。
 
-The CTS includes the following types of test cases:
+![CTS flow](https://source.android.com/compatibility/cts/images/cts-0.png)
+Figure 1. 如何使用CTS
 
-Unit tests test atomic units of code within the Android platform; e.g. a single class, such as java.util.HashMap.
-Functional tests test a combination of APIs together in a higher-level use-case.
-Future versions of the CTS will include the following types of test cases:
 
-Robustness tests test the durability of the system under stress.
-Performance tests test the performance of the system against defined benchmarks, for example rendering frames per second.
-Areas covered
+----
+#### 测试用例的类型
 
-The unit test cases cover the following areas to ensure compatibility:
+----
+CTS包括以下类型的测试用例：
 
-Area	Description
-Signature tests	For each Android release, there are XML files describing the signatures of all public APIs contained in the release. The CTS contains a utility to check those API signatures against the APIs available on the device. The results from signature checking are recorded in the test result XML file.
-Platform API Tests	Test the platform (core libraries and Android Application Framework) APIs as documented in the SDK Class Index to ensure API correctness, including correct class, attribute and method signatures, correct method behavior, and negative tests to ensure expected behavior for incorrect parameter handling.
-Dalvik Tests	The tests focus on testing the Dalvik Executable Format.
-Platform Data Model	The CTS tests the core platform data model as exposed to application developers through content providers, as documented in the SDK android.provider package: contacts, browser, settings, etc.
-Platform Intents	The CTS tests the core platform intents, as documented in the SDK Available Intents.
-Platform Permissions	The CTS tests the core platform permissions, as documented in the SDK Available Permissions.
-Platform Resources	The CTS tests for correct handling of the core platform resource types, as documented in the SDK Available Resource Types. This includes tests for: simple values, drawables, nine-patch, animations, layouts, styles and themes, and loading alternate resources.
+ - 单元测试项以测试Android平台中的原子代码;    例如一个类java.util.HashMap。
+ - 以高级别的使用用例来测试APIs的组合功能.
+
+CTS的未来版本将包括以下类型的测试用例
+
+ - 测试系统在压力下的耐久性的稳定性测试集.
+ - 基于预定义参数来测试系统的性能的基准测试，例如每秒渲染帧数。
+
+
+-----
+#### 涉及的领域
+
+-----
+单元测试用例涵盖以下几个方面，以确保兼容性：
+
+ - 签名测试
+
+对于每个Android版本，都有XML文件描述版本中包含的所有公共API的签名。 CTS包含用于根据设备上可用的API检查这些API签名的实用程序。 签名检查的结果记录在测试结果XML文件中。
+
+ - 平台API测试
+
+测试平台提供的（核心库和Android应用程序框架）API同对应SDK版本的索引进行比较，以确保API的正确性，包括正确的类，属性和方法签名，正确的方法行为和否定测试，以确保不正确的参数处理行为符合预期。
+
+ - Dalvik测试
+
+	测试主要关注Dalvik虚拟机的执行格式.
+
+ - 平台的数据模组
+
+	CTS测试平台的核心数据模型，是否通过内容提供类正确的暴露给应用程序开发人员，如SDK android.provider软件包中所述：联系人，浏览器，设置等。
+
+ - 平台申明
+
+	CTS按照SDK文档描述的可用申明说明来测试平台的核心申明.
+
+ - 平台权限
+
+	按照SDK文档描述的权限说明规定来测试平台的核心权限设定.
+
+ - 平台资源
+
+	CTS测试核心平台资源类型是否正确处理，如SDK可用资源类型中所述。 这包括以下测试：简单的值，可绘制，九补丁(**什么鬼?**)，动画，布局，样式和主题，以及加载备用资源。
+ 
+ -----
