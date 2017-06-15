@@ -1,4 +1,4 @@
-###[**Android Compatibility**](http://source.android.com/compatibility/index.html)
+### [**Android Compatibility**](http://source.android.com/compatibility/index.html)
 
 Android开发的目标,是建立一个开放性的平台提供给开发者进行各种应用的创作.
 
@@ -10,6 +10,7 @@ Android开发的目标,是建立一个开放性的平台提供给开发者进行
 > **Why build compatible Android devices?**
 
 ![Compatibility ecosystem](http://source.android.com/compatibility/images/compat-ecosystem.png)
+
 **Figure 1.** `Android系统会推进设备兼容性`
 
 **用户需要自定义设备.**
