@@ -37,6 +37,7 @@ CTS验证器是用于手动测试的工具，包括以下软件组件：
 该图总结了CTS工作流程。有关详细说明，请参阅本节的子页面，从[设置](https://source.android.com/compatibility/cts/setup.html)开始。
 
 ![CTS flow](https://source.android.com/compatibility/cts/images/cts-0.png)
+
 Figure 1. 如何使用CTS
 
 
@@ -63,11 +64,11 @@ CTS的未来版本将包括以下类型的测试用例
 
  - 签名测试
 
-对于每个Android版本，都有XML文件描述版本中包含的所有公共API的签名。 CTS包含用于根据设备上可用的API检查这些API签名的实用程序。 签名检查的结果记录在测试结果XML文件中。
+	对于每个Android版本，都有XML文件描述版本中包含的所有公共API的签名。 CTS包含用于根据设备上可用的API检查这些API签名的实用程序。 签名检查的结果记录在测试结果XML文件中。
 
  - 平台API测试
 
-测试平台提供的（核心库和Android应用程序框架）API同对应SDK版本的索引进行比较，以确保API的正确性，包括正确的类，属性和方法签名，正确的方法行为和否定测试，以确保不正确的参数处理行为符合预期。
+    测试平台提供的（核心库和Android应用程序框架）API同对应SDK版本的索引进行比较，以确保API的正确性，包括正确的类，属性和方法签名，正确的方法行为和否定测试，以确保不正确的参数处理行为符合预期。
 
  - Dalvik测试
 
