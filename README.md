@@ -11,6 +11,7 @@
 **`基于android官方文档 ( http://source.android.com ) 翻译学习并加入一些经验参考.`**
 **`最后更新基于android 7.0, 未全部完成.`**
 
+**`目前android开发网站已有部分官方中文版. 移步: https://source.android.com/ 页面下方语言选择-简体中文.`**
 
 -----
 **source**
