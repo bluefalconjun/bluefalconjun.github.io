@@ -1,0 +1,14 @@
+Vendor interface object
+芯片接口模型
+
+VINTF object design provides the following for device and framework components:
+VINTF模型设计 为设备和Framwork组件 提供以下信息:
+
+For Device
+Defines a schema for the static component (the device manifest file).
+Adds build time support for defining the device manifest file for a given device.
+Defines the queryable API at runtime that retrieves the device manifest file (along with the other runtime-collectible information) and packages them into the query result.
+
+For the Framework	
+Defines a schema for the static component (the framework manifest file).
+Defines the queryable API at runtime that retrieves the framework manifest file and packages it into the query result.  
